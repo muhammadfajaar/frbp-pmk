@@ -10,6 +10,18 @@
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     {{-- Title --}}
     <title>FRPB | {{ $title }}</title>
+    <style>
+      .nav-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        height: 150%;
+      }
+      .navbar-custom {
+        padding-bottom: 30px;
+      }
+    </style>
   </head>
   <body>
     
