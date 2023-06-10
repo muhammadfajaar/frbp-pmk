@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-    <h1 class="mb-3 text-center">{{ $title }}</h1>
+    <h1 class="mb-3 text-center" style="color: #00ADB5">{{ $title }}</h1>
 
     <div class="row justify-content-center mb-3">
         <div class="col-md-8">
@@ -16,7 +16,7 @@
                     <input type="text" class="form-control" placeholder="Search.." name="search"
                         value="{{ request('search') }}">
                     <button class="btn btn-outline-secondary" type="submit"
-                        style="background-color: #14b8a6">Search</button>
+                        style="background-color: #00ADB5">Search</button>
                 </div>
             </form>
         </div>
@@ -28,7 +28,7 @@
                 alt="{{ $posts[0]->category->name }}">
             <div class="card-body text-center">
                 <h5 class="card-title"><a href="/posts/{{ $posts[0]->slug }}"
-                        class="text-decoration-none text-dark">{{ $posts[0]->title }}</a></h5>
+                        class="text-decoration-none" style="color: #00ADB5">{{ $posts[0]->title }}</a></h5>
                 <p>
                     <small class="text-muted">
                         By. <a href="/posts?author={{ $posts[0]->author->username }}"
@@ -41,8 +41,7 @@
 
                 <p class="card-text">{{ $posts[0]->excerpt }}</p>
 
-                <a href="/posts/{{ $posts[0]->slug }}" type="button" class="text-decoration-none btn btn-primary">Read
-                    more..</a>
+                <a href="/posts/{{ $posts[0]->slug }}" type="button" class="text-decoration-none btn btn-primary" style="background-color: #00ADB5">Read more..</a>
 
             </div>
         </div>
@@ -58,7 +57,7 @@
                             <img src="https://source.unsplash.com/500x400/?{{ $post->category->name }}"
                                 class="card-img-top" alt="{{ $post->category->name }}">
                             <div class="card-body">
-                                <h5 class="card-title">{{ $post->title }}</h5>
+                                <h5 class="card-title" style="color: #00ADB5">{{ $post->title }}</h5>
                                 <p>
                                     <small class="text-muted">
                                         By. <a class="text-decoration-none"
@@ -67,7 +66,7 @@
                                     </small>
                                 </p>
                                 <p class="card-text">{{ $post->excerpt }}</p>
-                                <a href="/posts/{{ $post->slug }}" class="btn btn-primary">Read more..</a>
+                                <a href="/posts/{{ $post->slug }}" class="btn btn-primary" style="background-color: #00ADB5">Read more..</a>
                             </div>
                         </div>
                     </div>

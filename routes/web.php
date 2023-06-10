@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\PostController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,9 +63,21 @@ Route::get('/galery', function () {
     ]);
 });
 
+Route::get('/member', function () {
+    return view('member', [
+        'title' => 'Anggota,',
+        'active' => 'member'
+    ]);
+});
+
 Route::get('/contact', function () {
     return view('contact', [
         'title' => 'Kontak',
         'active' => 'contact'
     ]);
 });
+
+Route::get('/login', [LoginController::class, 'index']);
+
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store']);
