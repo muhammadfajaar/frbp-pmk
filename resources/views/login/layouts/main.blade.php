@@ -11,7 +11,7 @@
     {{-- Favicon --}}
     <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
     {{-- Title --}}
-    <title>FRPB | Login</title>
+    <title>FRPB | {{ $title }}</title>
 </head>
 
 <body class="hold-transition login-page">
@@ -19,7 +19,8 @@
     <div class="login-box">
         @yield('container')
     </div>
-    
+
+    <!-- Tautan JS AdminLTE -->
     <script src="{{ asset('js/adminlte.min.js') }}"></script>
 </body>
 

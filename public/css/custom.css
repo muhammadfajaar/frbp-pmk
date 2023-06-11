@@ -1,25 +1,25 @@
 .nav-text {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: flex-end;
-   height: 125%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 125%;
 }
 
 .navbar-custom {
-   padding-bottom: 18px;
+    padding-bottom: 18px;
 }
 
 .navbar-top {
-   padding-bottom: 30px;
+    padding-bottom: 30px;
 }
 
 .navbar .nav-link {
-   margin-right: 7px;
-   margin-left: 7px;
-   font-size: 14px;
+    margin-right: 7px;
+    margin-left: 7px;
+    font-size: 14px;
 }
 
 .pagination .page-item.active .page-link {
-   background-color: #00ADB5;
+    background-color: #00adb5;
 }

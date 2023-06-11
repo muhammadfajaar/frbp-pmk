@@ -18,10 +18,6 @@ const mix = require('laravel-mix');
  .copy('node_modules/admin-lte/dist/js/adminlte.min.js', 'public/js')
  .copy('node_modules/admin-lte/dist/img', 'public/img')
 //  bootstrap
-.postCss('resources/css/app.css', 'public/css', [
-   require('postcss-import'),
-   require('tailwindcss'),
-])
 .sass('resources/sass/app.scss', 'public/css')
 .copy('node_modules/bootstrap/dist/js/bootstrap.min.js', 'public/js')
 .copy('node_modules/bootstrap/dist/css/bootstrap.min.css', 'public/css')

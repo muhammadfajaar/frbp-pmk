@@ -1,12 +1,21 @@
 @extends('login.layouts.main')
 
 @section('container')
+
     @if (session()->has('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
+
+    @if (session()->has('loginError'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('loginError') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
     <div class="login-logo">
         <a href="#"><b>FRPB</b> PAMEKASAN</a>
     </div>
@@ -15,17 +24,25 @@
         <div class="card-body login-card-body">
             <p class="login-box-msg">Masuk untuk memulai sesi Anda</p>
 
-            <form action="../../index3.html" method="post">
+            <form action="/login" method="post">
+                @csrf
                 <div class="input-group mb-3">
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email"
+                        name="email" id="email" autofocus required>
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
                         </div>
                     </div>
+                    @error('email')
+                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="Password">
+                    <input type="password" class="form-control" placeholder="Password" name="password" id="password"
+                        required>
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
