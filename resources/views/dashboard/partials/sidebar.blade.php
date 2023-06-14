@@ -28,8 +28,9 @@
                     </p>
                 </a>
             </li>
+            @can('admin')
             <li class="nav-item menu-is-opening menu-open">
-                <a href="#" class="nav-link {{ Request::is('dashboard/administrators*') ? 'active' : '' }}">
+                <a href="#" class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-user"></i>
                     <p>
                         Administrator
@@ -38,7 +39,7 @@
                 </a>
                 <ul class="nav nav-treeview" style="display: block;">
                     <li class="nav-item">
-                        <a href="/dashboard/administrators/post-categories" class="nav-link {{ Request::is('dashboard/administrators/post-categories*') ? 'active' : '' }}">
+                        <a href="/dashboard/categories" class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Daftar Kategori Berita</p>
                         </a>
@@ -51,6 +52,7 @@
                     </li>
                 </ul>
             </li>
+            @endcan
             <li class="nav-item">
                 <a href="/dashboard/posts" class="nav-link {{ Request::is('dashboard/posts*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-newspaper"></i>

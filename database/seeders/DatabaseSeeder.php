@@ -18,9 +18,16 @@ class DatabaseSeeder extends Seeder
    {
       
       User::create([
-         'name' => 'Muhammad Fajar',
-         'username' => 'muhammadfajar',
-         'email' => 'muhammadfadjaar@gmail.com',
+         'name' => 'Admin',
+         'username' => 'admin',
+         'email' => 'admin@gmail.com',
+         'password' => bcrypt('password')
+      ]);
+
+      User::create([
+         'name' => 'Author',
+         'username' => 'author',
+         'email' => 'author@gmail.com',
          'password' => bcrypt('password')
       ]);
       
@@ -41,6 +48,6 @@ class DatabaseSeeder extends Seeder
          'slug' => 'personal'
       ]);
 
-      Post::factory(20)->create();
+      Post::factory(30)->create();
    }
 }
