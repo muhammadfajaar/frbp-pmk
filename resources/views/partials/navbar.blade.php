@@ -1,6 +1,6 @@
 <nav class="navbar navbar-light bg-light navbar-top">
     <div class="container-fluid">
-        <div class="col-md-10">
+        <div class="col-md-9">
             <a class="navbar-brand" href="#">
                 <img src="/img/logo-frpb.png" alt="" width="40" height="40"
                     class="d-inline-block align-text-top">
@@ -8,10 +8,10 @@
             </a>
         </div>
         @auth
-            <div class="col-md-2" style="20px">
+            <div class="col-md-3">
                 <div class="dropdown custom-dropdown">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                        data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #00ADB5">
+                    <a class="btn btn-secondary dropdown-toggle text-left" href="#" role="button" id="dropdownMenuLink"
+                        data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #00ADB5;">
                         <span style="font-size: 14px">Welcome back, {{ auth()->user()->name }}</span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">

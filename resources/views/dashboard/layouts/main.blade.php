@@ -26,23 +26,33 @@
     <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="/plugins/summernote/summernote-bs4.min.css">
+    {{-- Favicon --}}
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+    {{-- Trix Editor --}}
+    <link rel="stylesheet" type="text/css" href="/css/trix.css">
+
+    <style>
+        trix-toolbar [data-trix-button-group="file-tools"] {
+            display: none;
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
-   <div class="wrapper">
-      <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-         @include('dashboard.partials.header')
-      </nav>
-      <aside class="main-sidebar sidebar-dark-primary elevation-4">
-         @include('dashboard.partials.sidebar')
-      </aside>
-      <main class="content-wrapper">
-         @yield('content-wrapper')
-      </main>
-      <footer  class="main-footer">
-         @include('dashboard.partials.footer')
-      </footer>
-   </div>
+    <div class="wrapper">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            @include('dashboard.partials.header')
+        </nav>
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            @include('dashboard.partials.sidebar')
+        </aside>
+        <main class="content-wrapper">
+            @yield('content-wrapper')
+        </main>
+        <footer class="main-footer">
+            @include('dashboard.partials.footer')
+        </footer>
+    </div>
     <!-- jQuery -->
     <script src="/plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
@@ -77,6 +87,12 @@
     {{-- <script src="js/demo.js"></script> --}}
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="/js/pages/dashboard.js"></script>
+    {{-- Feetjer icons --}}
+    <script>
+       feather.replace();
+    </script>
+    {{-- Trix Editor --}}
+    <script src="/js/trix.js"></script>
 </body>
 
 </html>

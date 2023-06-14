@@ -1,18 +1,21 @@
 <?php
 
+use App\Http\Controllers\AdminPostCategoryController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\DashboardAgendaController;
-use App\Http\Controllers\DashboardAspirationController;
-use App\Http\Controllers\DashboardDisasterController;
 use App\Http\Controllers\DashboardGaleryController;
 use App\Http\Controllers\DashboardMemberController;
-use App\Http\Controllers\DashboardOrganizationController;
 use App\Http\Controllers\DashboardProfileController;
+use App\Http\Controllers\DashboardDisasterController;
+use App\Http\Controllers\DashboardAspirationController;
+use App\Http\Controllers\DashboardOrganizationController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -100,18 +103,21 @@ Route::get('/dashboard', function() {
 
 Route::get('/dashboard/users', [DashboardUserController::class, 'index']);
 
-Route::get('/dashboard/posts', [DashboardPostController::class, 'index']);
+Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
+Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
 
-Route::get('/dashboard/organizations', [DashboardOrganizationController::class, 'index']);
+Route::resource('/dashboard/administrators/post-categories', AdminPostCategoryController::class)->except('show')->middleware('auth');
 
-Route::get('/dashboard/disaters', [DashboardDisasterController::class, 'index']);
+// Route::get('/dashboard/organizations', [DashboardOrganizationController::class, 'index']);
 
-Route::get('/dashboard/agendas', [DashboardAgendaController::class, 'index']);
+// Route::get('/dashboard/disaters', [DashboardDisasterController::class, 'index']);
 
-Route::get('/dashboard/profiles', [DashboardProfileController::class, 'index']);
+// Route::get('/dashboard/agendas', [DashboardAgendaController::class, 'index']);
 
-Route::get('/dashboard/gelerys', [DashboardGaleryController::class, 'index']);
+// Route::get('/dashboard/profiles', [DashboardProfileController::class, 'index']);
 
-Route::get('/dashboard/members', [DashboardMemberController::class, 'index']);
+// Route::get('/dashboard/gelerys', [DashboardGaleryController::class, 'index']);
 
-Route::get('/dashboard/aspirations', [DashboardAspirationController::class, 'index']);
+// Route::get('/dashboard/members', [DashboardMemberController::class, 'index']);
+
+// Route::get('/dashboard/aspirations', [DashboardAspirationController::class, 'index']);

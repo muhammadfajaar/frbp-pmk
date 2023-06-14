@@ -1,3 +1,6 @@
+import '@fortawesome/fontawesome-free/css/all.css';
+import feather from 'feather-icons';
+
 window._ = require('lodash');
 
 /**

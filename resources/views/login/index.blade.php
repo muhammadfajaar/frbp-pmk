@@ -1,23 +1,20 @@
 @extends('login.layouts.main')
 
 @section('container')
-
     @if (session()->has('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="alert alert-success" role="alert">
             {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
 
     @if (session()->has('loginError'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div class="alert alert-danger" role="alert">
             {{ session('loginError') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
 
     <div class="login-logo">
-        <a href="#"><b>FRPB</b> PAMEKASAN</a>
+        <a href="/"><b>FRPB</b> PAMEKASAN</a>
     </div>
     <!-- /.login-logo -->
     <div class="card">
