@@ -36,8 +36,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
-                            <a href="/dashboard/categories/create" class="btn btn-block btn-primary btn-sm"><i
-                                    class="nav-icon fas fa-plus"> Tambah Kategori</i></a>
+                            <a href="/dashboard/categories/create" class="btn btn-block btn-primary">Add Kategori</a>
                         </h3>
                         <div class="card-tools">
                         </div>
@@ -59,14 +58,13 @@
                                         <td>{{ $category->name }}</td>
                                         <td>
                                             <a href="/dashboard/categories/{{ $category->slug }}/edit"
-                                                class="badge bg-warning"><i class="nav-icon fas fa-edit fa-lg"></i></a>
+                                                class="badge bg-warning">Edit</a>
                                             <form action="/dashboard/categories/{{ $category->slug }}" method="post"
                                                 class="d-inline">
                                                 @method('delete')
                                                 @csrf
                                                 <button class="badge bg-danger border-0"
-                                                    onclick="return confirm('Are you sure')"><i
-                                                        class="nav-icon fas fa-times fa-lg"></i></button>
+                                                    onclick="return confirm('Are you sure')">Hapus</button>
                                             </form>
                                         </td>
                                     </tr>

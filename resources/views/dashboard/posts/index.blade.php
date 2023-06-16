@@ -36,7 +36,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
-                           <a href="/dashboard/posts/create" class="btn btn-block btn-primary btn-sm"><i class="nav-icon fas fa-plus"> Tambah Berita</i></a>
+                           <a href="/dashboard/posts/create" class="btn btn-block btn-primary">Tambah Berita</a>
                         </h3>
                         <div class="card-tools">
                             <div class="input-group input-group-sm" style="width: 150px;">
@@ -69,12 +69,12 @@
                                         <td>{{ $post->title }}</td>
                                         <td>{{ $post->category->name }}</td>
                                         <td>
-                                            <a href="/dashboard/posts/{{ $post->slug }}" class="badge bg-info"><i class="nav-icon fas fa-eye fa-lg"></i></a>
-                                            <a href="/dashboard/posts/{{ $post->slug }}/edit" class="badge bg-warning"><i class="nav-icon fas fa-edit fa-lg"></i></a>
+                                            <a href="/dashboard/posts/{{ $post->slug }}" class="badge bg-info">View</a>
+                                            <a href="/dashboard/posts/{{ $post->slug }}/edit" class="badge bg-warning">Edit</a>
                                             <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
                                                 @method('delete')
                                                 @csrf
-                                                <button class="badge bg-danger border-0" onclick="return confirm('Are you sure')"><i class="nav-icon fas fa-times fa-lg"></i></button>
+                                                <button class="badge bg-danger border-0" onclick="return confirm('Are you sure')">Delete</button>
                                             </form>
                                         </td>
                                     </tr>

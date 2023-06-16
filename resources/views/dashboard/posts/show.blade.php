@@ -26,13 +26,13 @@
                 <div class="col-md-8">
                     <h1 class="mb-3">{{ $post->title }}</h1>
 
-                    <a href="/dashboard/posts" class="btn btn-success mb-3 btn-sm"><i class='fa fa-arrow-left'></i> Back to
+                    <a href="/dashboard/posts" class="btn btn-success mb-3 btn-sm">Back to
                         all my posts</a>
-                    <a href="/dashboard/posts/{{ $post->slug }}/edit" class="btn btn-warning mb-3 btn-sm"><i class='fa fa-edit'></i> Edit</a>
+                    <a href="/dashboard/posts/{{ $post->slug }}/edit" class="btn btn-warning mb-3 btn-sm">Edit</a>
                     <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
                         @method('delete')
                         @csrf
-                        <button class="btn btn-danger mb-3 btn-sm" onclick="return confirm('Are you sure')"><i class='fa fa-times'></i> Delete</button>
+                        <button class="btn btn-danger mb-3 btn-sm" onclick="return confirm('Are you sure')">Delete</button>
                     </form>
 
                     @if ($post->image)

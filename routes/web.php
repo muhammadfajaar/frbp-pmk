@@ -8,13 +8,13 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\DashboardOrganizationController;
 use App\Http\Controllers\DashboardAgendaController;
 use App\Http\Controllers\DashboardGaleryController;
 use App\Http\Controllers\DashboardMemberController;
 use App\Http\Controllers\DashboardProfileController;
 use App\Http\Controllers\DashboardDisasterController;
 use App\Http\Controllers\DashboardAspirationController;
-use App\Http\Controllers\DashboardOrganizationController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -109,7 +109,8 @@ Route::resource('/dashboard/posts', DashboardPostController::class)->middleware(
 Route::get('/dashboard/categories/checkSlug', [AdminCategoryController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
 
-// Route::get('/dashboard/organizations', [DashboardOrganizationController::class, 'index']);
+
+
 
 // Route::get('/dashboard/disaters', [DashboardDisasterController::class, 'index']);
 

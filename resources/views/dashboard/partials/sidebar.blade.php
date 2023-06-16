@@ -39,7 +39,8 @@
                 </a>
                 <ul class="nav nav-treeview" style="display: block;">
                     <li class="nav-item">
-                        <a href="/dashboard/categories" class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : '' }}">
+                        <a href="/dashboard/categories"
+                            class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : '' }}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Daftar Kategori Berita</p>
                         </a>
@@ -62,7 +63,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="pages/widgets.html" class="nav-link">
+                <a href="/dashboard/organizations"
+                    class="nav-link {{ Request::is('dashboard/organizations*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-copy"></i>
                     <p>
                         Organisasi
