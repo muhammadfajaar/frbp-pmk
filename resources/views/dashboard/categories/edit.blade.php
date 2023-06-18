@@ -48,6 +48,7 @@
                 <button type="submit" class="btn btn-primary">Update Categry</button>
             </form>
         </div>
+    </section>
         <script>
             const name = document.querySelector('#name');
             const slug = document.querySelector('#slug');

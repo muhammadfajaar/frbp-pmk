@@ -9,11 +9,11 @@ use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\DashboardOrganizationController;
+use App\Http\Controllers\DashboardDisasterController;
 use App\Http\Controllers\DashboardAgendaController;
 use App\Http\Controllers\DashboardGaleryController;
 use App\Http\Controllers\DashboardMemberController;
 use App\Http\Controllers\DashboardProfileController;
-use App\Http\Controllers\DashboardDisasterController;
 use App\Http\Controllers\DashboardAspirationController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -109,6 +109,10 @@ Route::resource('/dashboard/posts', DashboardPostController::class)->middleware(
 Route::get('/dashboard/categories/checkSlug', [AdminCategoryController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
 
+Route::get('/dashboard/organizations/checkSlug', [DashboardOrganizationController::class, 'checkSlug']);
+Route::resource('/dashboard/organizations', DashboardOrganizationController::class);
+
+Route::resource('/dashboard/disasters', DashboardDisasterController::class)->middleware('auth');
 
 
 

@@ -29,30 +29,30 @@
                 </a>
             </li>
             @can('admin')
-            <li class="nav-item menu-is-opening menu-open">
-                <a href="#" class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-user"></i>
-                    <p>
-                        Administrator
-                        <i class="fas fa-angle-left right"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview" style="display: block;">
-                    <li class="nav-item">
-                        <a href="/dashboard/categories"
-                            class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : '' }}">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Daftar Kategori Berita</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Daftar Submenu Profil</p>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+                <li class="nav-item menu-is-opening menu-open">
+                    <a href="#" class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            Administrator
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" style="display: block;">
+                        <li class="nav-item">
+                            <a href="/dashboard/categories"
+                                class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Daftar Kategori Berita</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Daftar Submenu Profil</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             @endcan
             <li class="nav-item">
                 <a href="/dashboard/posts" class="nav-link {{ Request::is('dashboard/posts*') ? 'active' : '' }}">
@@ -72,7 +72,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="pages/widgets.html" class="nav-link">
+                <a href="/dashboard/disasters" class="nav-link {{ Request::is('dashboard/disasters*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-chart-pie"></i>
                     <p>
                         Kebencanaan

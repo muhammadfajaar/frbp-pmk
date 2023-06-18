@@ -85,6 +85,7 @@
                 <button type="submit" class="btn btn-primary">Update Post</button>
             </form>
         </div>
+    </section>
         <script>
             const title = document.querySelector('#title');
             const slug = document.querySelector('#slug');
