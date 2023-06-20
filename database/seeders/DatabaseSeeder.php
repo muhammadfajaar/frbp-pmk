@@ -95,25 +95,77 @@ class DatabaseSeeder extends Seeder
          'disaster_category_id' => 1,
          'subdistrict_id' => 1,
          'penyebab' => 'Kebocoran Tabung Gas',
-         'slug' => 'kebocoran-tabung-gas'
+         'slug' => 'kebocoran-tabung-gas',
+         'hilang' => 5,
+         'meninggal_dunia' => 0,
+         'mengungsi' => 10,
+         'luka_luka' => 3,
+         'rumah_rusak_ringan' => 9,
+         'rumah_rusak_sedang' => 12,
+         'rumah_rusak_berat' => 3,
+         'rumah_terendam' => 3,
+         'fas_pendidikan' => 2,
+         'fas_ibadah' => 1,
+         'fas_kesehatan' => 0,
+         'fas_umum' => 3,
+         'location' => 'Ds.Badung, Kab.Pamekasan, Ds.Banyubulu, Kab.Pamekasan, Ds.Batokalangan, Kab.Pamekasan'
       ]);
       Disaster::create([
          'disaster_category_id' => 1,
          'subdistrict_id' => 1,
          'penyebab' => 'Cuaca Sangat Panas',
-         'slug' => 'cuaca-sangat-panas'
+         'slug' => 'cuaca-sangat-panas',
+         'hilang' => 5,
+         'meninggal_dunia' => 0,
+         'mengungsi' => 10,
+         'luka_luka' => 3,
+         'rumah_rusak_ringan' => 9,
+         'rumah_rusak_sedang' => 12,
+         'rumah_rusak_berat' => 3,
+         'rumah_terendam' => 3,
+         'fas_pendidikan' => 2,
+         'fas_ibadah' => 1,
+         'fas_kesehatan' => 0,
+         'fas_umum' => 3,
+         'location' => 'Ds. Proppo, Kab.Pamekasan'
       ]);
       Disaster::create([
          'disaster_category_id' => 2,
          'subdistrict_id' => 2,
          'penyebab' => 'Hujan Selama Seminggu',
-         'slug' => 'hujan-selama-seminggu'
+         'slug' => 'hujan-selama-seminggu',
+         'hilang' => 5,
+         'meninggal_dunia' => 0,
+         'mengungsi' => 10,
+         'luka_luka' => 3,
+         'rumah_rusak_ringan' => 9,
+         'rumah_rusak_sedang' => 12,
+         'rumah_rusak_berat' => 3,
+         'rumah_terendam' => 3,
+         'fas_pendidikan' => 2,
+         'fas_ibadah' => 1,
+         'fas_kesehatan' => 0,
+         'fas_umum' => 3,
+         'location' => 'Ds.Panempan, Kab.Pamekasan'
       ]);
       Disaster::create([
          'disaster_category_id' => 3,
          'subdistrict_id' => 3,
          'penyebab' => 'Karena Hujan',
-         'slug' => 'karena-hujan'
+         'slug' => 'karena-hujan',
+         'hilang' => 5,
+         'meninggal_dunia' => 0,
+         'mengungsi' => 10,
+         'luka_luka' => 3,
+         'rumah_rusak_ringan' => 9,
+         'rumah_rusak_sedang' => 12,
+         'rumah_rusak_berat' => 3,
+         'rumah_terendam' => 3,
+         'fas_pendidikan' => 2,
+         'fas_ibadah' => 1,
+         'fas_kesehatan' => 0,
+         'fas_umum' => 3,
+         'location' => 'Ds. Larangan Tokol, Kab.Pamekasan'
       ]);
    }
 }

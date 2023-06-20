@@ -6,6 +6,7 @@ use App\Models\Disaster;
 use App\Models\DisasterCategory;
 use App\Models\Subdistrict;
 use Illuminate\Http\Request;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class DashboardDisasterController extends Controller
 {
@@ -66,7 +67,11 @@ class DashboardDisasterController extends Controller
      */
     public function edit(Disaster $disaster)
     {
-        //
+        return view('dashboard.disasters.edit', [
+            'title' => 'Edit',
+            'disaster' => $disaster,
+            'disasters' => Disaster::all()
+        ]);
     }
 
     /**
@@ -90,5 +95,11 @@ class DashboardDisasterController extends Controller
     public function destroy(Disaster $disaster)
     {
         //
+    }
+
+    public function checkSlug(Request $request)
+    {
+        $slug = SlugService::createSlug(Disaster::class, 'slug', $request->penyebab);
+        return response()->json(['slug' => $slug]);
     }
 }

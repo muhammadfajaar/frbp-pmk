@@ -15,6 +15,8 @@ use App\Http\Controllers\DashboardGaleryController;
 use App\Http\Controllers\DashboardMemberController;
 use App\Http\Controllers\DashboardProfileController;
 use App\Http\Controllers\DashboardAspirationController;
+use App\Http\Controllers\DisasterController;
+use App\Models\Disaster;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -35,12 +37,8 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/disaster', function () {
-    return view('disaster', [
-        'title' => 'Data Bencana',
-        'active' => 'disaster'
-    ]);
-});
+
+Route::get('/disaster', [DisasterController::class, 'index']);
 
 Route::get('/posts', [PostController::class, 'index']);
 Route::get('/posts/{post:slug}', [PostController::class, 'show']);
@@ -110,8 +108,9 @@ Route::get('/dashboard/categories/checkSlug', [AdminCategoryController::class, '
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
 
 Route::get('/dashboard/organizations/checkSlug', [DashboardOrganizationController::class, 'checkSlug']);
-Route::resource('/dashboard/organizations', DashboardOrganizationController::class);
+Route::resource('/dashboard/organizations', DashboardOrganizationController::class)->middleware('auth');
 
+Route::get('/dashboard/disasters/checkSlug', [DashboardDisasterController::class, 'checkSlug']);
 Route::resource('/dashboard/disasters', DashboardDisasterController::class)->middleware('auth');
 
 
