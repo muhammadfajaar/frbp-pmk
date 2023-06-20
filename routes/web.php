@@ -37,9 +37,10 @@ Route::get('/', function () {
     ]);
 });
 
-
+// halaman tampilan data bencana
 Route::get('/disaster', [DisasterController::class, 'index']);
 
+// halaman tampilan berita
 Route::get('/posts', [PostController::class, 'index']);
 Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 
@@ -101,16 +102,20 @@ Route::get('/dashboard', function() {
 
 Route::get('/dashboard/users', [DashboardUserController::class, 'index']);
 
+// halaman berita
 Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
 
+// halaman kategory berita
 Route::get('/dashboard/categories/checkSlug', [AdminCategoryController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
 
+// halaman data organisasi
 Route::get('/dashboard/organizations/checkSlug', [DashboardOrganizationController::class, 'checkSlug']);
 Route::resource('/dashboard/organizations', DashboardOrganizationController::class)->middleware('auth');
 
-Route::get('/dashboard/disasters/checkSlug', [DashboardDisasterController::class, 'checkSlug']);
+// halaman data bencana
+Route::get('/dashboard/disasters/checkSlug', [DashboardDisasterController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/disasters', DashboardDisasterController::class)->middleware('auth');
 
 

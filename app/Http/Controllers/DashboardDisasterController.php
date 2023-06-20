@@ -31,9 +31,9 @@ class DashboardDisasterController extends Controller
     public function create()
     {
         return view('dashboard.disasters.create', [
-            'title'=> 'Create',
+            'title' => 'Create',
             'disasterCategories' => DisasterCategory::all(),
-            'subdistrict' => Subdistrict::all()
+            'subdistricts' => Subdistrict::all()
         ]);
     }
 
@@ -45,7 +45,30 @@ class DashboardDisasterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'disaster_category_id' => 'required',
+            'subdistrict_id' => 'required',
+            'penyebab' => 'required|max:255',
+            'slug' => 'required|unique:disasters',
+            'location' => 'required',
+            'hilang' => 'sometimes|required',
+            'meninggal_dunia' => 'sometimes|required',
+            'mengungsi' => 'sometimes|required',
+            'luka_luka' => 'sometimes|required',
+            'rumah_rusak_ringan' => 'sometimes|required',
+            'rumah_rusak_sedang' => 'sometimes|required',
+            'rumah_rusak_berat' => 'sometimes|required',
+            'rumah_terendam' => 'sometimes|required',
+            'fas_pendidikan' => 'sometimes|required',
+            'fas_ibadah' => 'sometimes|required',
+            'fas_kesehatan' => 'sometimes|required',
+            'fas_umum' => 'sometimes|required',
+            'waktu' => 'required|max:10'
+        ]);
+
+        Disaster::create($validatedData);
+
+        return redirect('/dashboard/disasters')->with('berhasil', 'Data kebencanaan baru sudah ditambah!');
     }
 
     /**

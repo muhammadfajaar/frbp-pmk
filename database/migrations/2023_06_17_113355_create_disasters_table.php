@@ -20,6 +20,7 @@ class CreateDisastersTable extends Migration
             $table->string('penyebab');
             $table->string('slug')->uniqid();
             $table->text('location');
+            $table->string('waktu');
             $table->integer('hilang')->nullable();
             $table->integer('meninggal_dunia')->nullable();
             $table->integer('mengungsi')->nullable();

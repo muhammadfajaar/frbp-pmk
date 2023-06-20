@@ -22,18 +22,18 @@
     {{-- main section start --}}
     <section class="content">
         <div class="col-lg-8">
-            <form method="post" action="/dashboard/disasters" enctype="multipart/form-data" class="mb-5">
+            <form method="post" action="/dashboard/disasters" class="mb-5">
                 @csrf
                 <div class="form-group">
                     <label for="waktu" class="form-label">Tanggal</label>
                     <input type="date" class="form-control" id="waktu" name="waktu" required>
                 </div>
                 <div class="form-group">
-                    <label for="disasterCategory" class="form-label">Jenis Peristiwa</label>
-                    <select class="custom-select" name="disasterCategory">
+                    <label for="disaster_category" class="form-label">Jenis Peristiwa</label>
+                    <select class="custom-select" name="disaster_category_id">
                         <option>Pilih</option>
                         @foreach ($disasterCategories as $disasterCategory)
-                            @if (old('disasterCategory') == $disasterCategory->id)
+                            @if (old('disaster_category_id') == $disasterCategory->id)
                                 <option value="{{ $disasterCategory->id }}" selected>{{ $disasterCategory->name }}</option>
                             @else
                                 <option value="{{ $disasterCategory->id }}">{{ $disasterCategory->name }}</option>
@@ -43,10 +43,10 @@
                 </div>
                 <div class="form-group">
                     <label for="subdistrict" class="form-label">Kecamatan</label>
-                    <select class="custom-select" name="subdistrict">
+                    <select class="custom-select" name="subdistrict_id">
                         <option>Pilih</option>
-                        @foreach ($subdistrict as $subdistrict)
-                            @if (old('subdistrict') == $subdistrict->id)
+                        @foreach ($subdistricts as $subdistrict)
+                            @if (old('subdistrict_id') == $subdistrict->id)
                                 <option value="{{ $subdistrict->id }}" selected>{{ $subdistrict->name }}</option>
                             @else
                                 <option value="{{ $subdistrict->id }}">{{ $subdistrict->name }}</option>
@@ -55,8 +55,8 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="kecamatan">Lokasi</label>
-                    <textarea id="kecamatan" class="form-control" placeholder="Masukkan nama kecamatan" rows="3"
+                    <label for="location">Lokasi</label>
+                    <textarea id="location" name="location" class="form-control" placeholder="Masukkan nama kecamatan" rows="3"
                         oninput="searchVillages()"></textarea>
                 </div>
                 <div id="result"></div>
@@ -81,53 +81,57 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="meniggal" class="form-label">Meniggal</label>
-                    <input type="number" class="form-control" id="meniggal" name="meniggal" value="0">
+                    <label for="meninggal_dunia" class="form-label">Meniggal</label>
+                    <input type="number" class="form-control" id="meninggal_dunia" name="meninggal_dunia" required value="{{ old('meninggal_dunia', 0) }}">
                 </div>
                 <div class="form-group">
                     <label for="hilang" class="form-label">Hilang</label>
-                    <input type="number" class="form-control" id="hilang" name="hilang" value="0">
+                    <input type="number" class="form-control" id="hilang" name="hilang" required value="{{ old('hilang', 0) }}">
                 </div>
                 <div class="form-group">
                     <label for="luka_luka" class="form-label">Luka_Luka</label>
-                    <input type="number" class="form-control" id="luka_luka" name="luka_luka" value="0">
+                    <input type="number" class="form-control" id="luka_luka" name="luka_luka" required value="{{ old('luka_luka', 0) }}">
                 </div>
                 <div class="form-group">
                     <label for="mengungsi" class="form-label">Mengungsi</label>
-                    <input type="number" class="form-control" id="mengungsi" name="mengungsi" value="0">
+                    <input type="number" class="form-control" id="mengungsi" name="mengungsi" required value="{{ old('mengungsi', 0) }}">
                 </div>
                 <div class="form-group">
                     <label for="rumah_rusak_ringan" class="form-label">Rumah Rusak Ringan</label>
                     <input type="number" class="form-control" id="rumah_rusak_ringan" name="rumah_rusak_ringan"
-                        value="0">
+                    required value="{{ old('rumah_rusak_ringan', 0) }}">
                 </div>
                 <div class="form-group">
                     <label for="rumah_rusak_sedang" class="form-label">Rumah Rusak Sedang</label>
                     <input type="number" class="form-control" id="rumah_rusak_sedang" name="rumah_rusak_sedang"
-                        value="0">
+                    required value="{{ old('rumah_rusak_sedang', 0) }}">
                 </div>
                 <div class="form-group">
                     <label for="rumah_rusak_berat" class="form-label">Rumah Rusak Berat</label>
                     <input type="number" class="form-control" id="rumah_rusak_berat" name="rumah_rusak_berat"
-                        value="0">
+                    required value="{{ old('rumah_rusak_berat', 0) }}">
                 </div>
                 <div class="form-group">
                     <label for="rumah_terendam" class="form-label">Rumah Terendam</label>
                     <input type="number" class="form-control" id="rumah_terendam" name="rumah_terendam"
-                        value="0">
+                    required value="{{ old('rumah_terendam', 0) }}">
                 </div>
                 <div class="form-group">
                     <label for="fas_pendidikan" class="form-label">Fas. Pendidikan</label>
                     <input type="number" class="form-control" id="fas_pendidikan" name="fas_pendidikan"
-                        value="0">
+                    required value="{{ old('fas_pendidikan', 0) }}">
                 </div>
                 <div class="form-group">
                     <label for="fas_kesehatan" class="form-label">Fas. Kesehatan</label>
-                    <input type="number" class="form-control" id="fas_kesehatan" name="fas_kesehatan" value="0">
+                    <input type="number" class="form-control" id="fas_kesehatan" name="fas_kesehatan" required value="{{ old('fas_kesehatan', 0) }}">
                 </div>
                 <div class="form-group">
                     <label for="fas_umum" class="form-label">Fas. Umum</label>
-                    <input type="number" class="form-control" id="fas_umum" name="fas_umum" value="0">
+                    <input type="number" class="form-control" id="fas_umum" name="fas_umum" required value="{{ old('fas_umum', 0) }}">
+                </div>
+                <div class="form-group">
+                    <label for="fas_ibadah" class="form-label">Fas. Ibadah</label>
+                    <input type="number" class="form-control" id="fas_ibadah" name="fas_ibadah" required value="{{ old('fas_ibadah', 0) }}">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Create</button>
@@ -409,7 +413,7 @@
         }
 
         function searchVillages() {
-            var input = document.getElementById("kecamatan").value;
+            var input = document.getElementById("location").value;
             var resultDiv = document.getElementById("result");
 
             if (input.trim() !== "") {
@@ -458,11 +462,11 @@
                 selectedVillages.push(villageName);
             }
 
-            var kecamatanInput = document.getElementById("kecamatan");
+            var kecamatanInput = document.getElementById("location");
             kecamatanInput.value = selectedVillages.join(", ");
         }
 
-        var kecamatanInput = document.getElementById("kecamatan");
+        var kecamatanInput = document.getElementById("location");
         kecamatanInput.addEventListener("keyup", function(event) {
             if (event.keyCode === 13) {
                 searchVillages();

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Organization;
 use Illuminate\Http\Request;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardOrganizationController extends Controller
 {
@@ -80,23 +81,30 @@ class DashboardOrganizationController extends Controller
         $rules = [
             'name' => 'required|max:255',
             'short_name' => 'required|max:50',
-            'charmain_name' => 'required|max:255',
+            'chairman_name' => 'required|max:255',
             'notelp' => 'required|max:20',
             'email' => 'required|max:255',
             'address' => 'required|max:255',
-            'maps_link' => 'nullable|url'
+            'image' => 'image|file|max:1024',
+            'maps_link' => 'sometimes|required'
         ];
 
-        if($request->slug != $organization->slug) {
+        if ($request->slug != $organization->slug) {
             $rules['slug'] = 'required|unique:organizations';
         }
 
         $validatedData = $request->validate($rules);
 
-        Organization::where('id', $organization->id)
-            ->update($validatedData);
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('post-images');
+        }
 
-        return redirect('/dashboard/organizations')->with('success', 'Organization has beed updated!');
+        $organization->update($validatedData);
+
+        return redirect('/dashboard/organizations')->with('berhasil', 'Data organisasi sudah diubah!');
     }
 
     /**

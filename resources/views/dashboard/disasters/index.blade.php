@@ -81,7 +81,7 @@
                                 @foreach ($disasters as $disaster)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $disaster->created_at->format('Y-m-d') }}</td>
+                                        <td>{{ $disaster->waktu }}</td>
                                         <td>{{ $disaster->disasterCategory->name }}</td>
                                         <td>{{ $disaster->subdistrict->name }}</td>
                                         <td>{{ $disaster->location }}</td>

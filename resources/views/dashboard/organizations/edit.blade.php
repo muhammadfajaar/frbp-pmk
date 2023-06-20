@@ -97,7 +97,7 @@
                 </div>
                 <div class="form-group">
                     <label for="maps_link" class="form-label">Map Link</label>
-                    <textarea class="form-control @error('maps_link') is-invalid @enderror" id="maps_link" rows="3">{{ old('maps_link', $organization->maps_link) }}</textarea>
+                    <textarea class="form-control @error('maps_link') is-invalid @enderror" id="maps_link" name="maps_link" rows="3">{{ old('maps_link', $organization->maps_link) }}</textarea>
                     @error('maps_link')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -122,7 +122,7 @@
                     @enderror
                 </div>
 
-                <button type="submit" class="btn btn-primary">Update Organisasi</button>
+                <button type="submit" class="btn btn-primary">Update</button>
             </form>
         </div>
     </section>
@@ -136,18 +136,18 @@
                 .then(data => slug.value = data.slug)
         });
 
-        // function previewImage() {
-        //     const image = document.querySelector('#image');
-        //     const imgPreview = document.querySelector('.img-preview');
+        function previewImage() {
+            const image = document.querySelector('#image');
+            const imgPreview = document.querySelector('.img-preview');
 
-        //     imgPreview.style.display = 'block';
+            imgPreview.style.display = 'block';
 
-        //     const oFReader = new FileReader();
-        //     oFReader.readAsDataURL(image.files[0]);
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
 
-        //     oFReader.onload = function(oFREvent) {
-        //         imgPreview.src = oFREvent.target.result;
-        //     }
-        // }
+            oFReader.onload = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
+        }
     </script>
 @endsection

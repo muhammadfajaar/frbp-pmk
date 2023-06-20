@@ -108,7 +108,8 @@ class DatabaseSeeder extends Seeder
          'fas_ibadah' => 1,
          'fas_kesehatan' => 0,
          'fas_umum' => 3,
-         'location' => 'Ds.Badung, Kab.Pamekasan, Ds.Banyubulu, Kab.Pamekasan, Ds.Batokalangan, Kab.Pamekasan'
+         'location' => 'Ds.Badung, Kab.Pamekasan, Ds.Banyubulu, Kab.Pamekasan, Ds.Batokalangan, Kab.Pamekasan',
+         'waktu' => '12-06-2023'
       ]);
       Disaster::create([
          'disaster_category_id' => 1,
@@ -127,7 +128,8 @@ class DatabaseSeeder extends Seeder
          'fas_ibadah' => 1,
          'fas_kesehatan' => 0,
          'fas_umum' => 3,
-         'location' => 'Ds. Proppo, Kab.Pamekasan'
+         'location' => 'Ds. Proppo, Kab.Pamekasan',
+         'waktu' => '11s-06-2023'
       ]);
       Disaster::create([
          'disaster_category_id' => 2,
@@ -146,7 +148,8 @@ class DatabaseSeeder extends Seeder
          'fas_ibadah' => 1,
          'fas_kesehatan' => 0,
          'fas_umum' => 3,
-         'location' => 'Ds.Panempan, Kab.Pamekasan'
+         'location' => 'Ds.Panempan, Kab.Pamekasan',
+         'waktu' => '19-06-2023'
       ]);
       Disaster::create([
          'disaster_category_id' => 3,
@@ -165,7 +168,8 @@ class DatabaseSeeder extends Seeder
          'fas_ibadah' => 1,
          'fas_kesehatan' => 0,
          'fas_umum' => 3,
-         'location' => 'Ds. Larangan Tokol, Kab.Pamekasan'
+         'location' => 'Ds. Larangan Tokol, Kab.Pamekasan',
+         'waktu' => '20-06-2023'
       ]);
    }
 }

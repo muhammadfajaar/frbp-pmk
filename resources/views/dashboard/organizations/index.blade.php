@@ -20,7 +20,7 @@
     <!-- /.content-header -->
     <section class="content col-lg-7">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-8">
                 @if (session()->has('success'))
                     <div class="alert alert-success" role="alert">
                         {{ session('success') }}
@@ -66,10 +66,11 @@
                   <label for="maps_link">Map Link</label>
                   <textarea class="form-control" id="maps_link" rows="3" disabled>{{ $organization->maps_link }}</textarea>                  
                 </div>
-                {{-- <div class="form-group">
+                <div class="form-group">
                     <label for="image">Logo</label>
-                    <input type="text" class="form-control" id="image" value="{{ $organization->image }}" disabled>
-                </div> --}}
+                    <br>
+                    <img src="{{ asset('storage/' . $organization->image) }}" class="img-fluid mt-3" width="300" height="300">
+                </div>
             </div>
         @endforeach
     </section>
