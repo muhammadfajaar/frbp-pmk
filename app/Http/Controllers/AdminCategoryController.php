@@ -51,7 +51,7 @@ class AdminCategoryController extends Controller
 
         Category::create($validateData);
 
-        return redirect('/dashboard/categories')->with('berhasil', 'Kategori baru sudah ditambah!');
+        return redirect('/dashboard/categories')->with('success', 'Category has beed added!');
     }
 
     /**

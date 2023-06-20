@@ -99,7 +99,7 @@
                                         <td>{{ $disaster->fas_kesehatan }}</td>
                                         <td>{{ $disaster->fas_umum }}</td>
                                         <td>
-                                            <a href="/dashboard/disasters/{{ $disaster->slug }}" class="badge bg-info">View</a>
+                                            {{-- <a href="/dashboard/disasters/{{ $disaster->slug }}" class="badge bg-info">View</a> --}}
                                             <a href="/dashboard/disasters/{{ $disaster->slug }}/edit"
                                                 class="badge bg-warning">Edit</a>
                                             <form action="/dashboard/disasters/{{ $disaster->slug }}" method="post"

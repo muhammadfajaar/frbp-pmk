@@ -26,7 +26,13 @@
                 @csrf
                 <div class="form-group">
                     <label for="waktu" class="form-label">Tanggal</label>
-                    <input type="date" class="form-control" id="waktu" name="waktu" required>
+                    <input type="date" class="form-control @error('waktu') is-invalid @enderror" id="waktu"
+                        name="waktu" required>
+                    @error('waktu')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="disaster_category" class="form-label">Jenis Peristiwa</label>
@@ -56,8 +62,13 @@
                 </div>
                 <div class="form-group">
                     <label for="location">Lokasi</label>
-                    <textarea id="location" name="location" class="form-control" placeholder="Masukkan nama kecamatan" rows="3"
-                        oninput="searchVillages()"></textarea>
+                    <textarea id="location" name="location" class="form-control @error('location') is-invalid @enderror"
+                        placeholder="Masukkan nama kecamatan" rows="3" oninput="searchVillages()"></textarea>
+                    @error('location')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div id="result"></div>
                 <div class="form-group">
@@ -82,56 +93,123 @@
                 </div>
                 <div class="form-group">
                     <label for="meninggal_dunia" class="form-label">Meniggal</label>
-                    <input type="number" class="form-control" id="meninggal_dunia" name="meninggal_dunia" required value="{{ old('meninggal_dunia', 0) }}">
+                    <input type="number" class="form-control" id="meninggal_dunia" name="meninggal_dunia" required
+                        value="{{ old('meninggal_dunia', 0) }}">
+                    @error('meninggal_dunia')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="hilang" class="form-label">Hilang</label>
-                    <input type="number" class="form-control" id="hilang" name="hilang" required value="{{ old('hilang', 0) }}">
+                    <input type="number" class="form-control" id="hilang" name="hilang" required
+                        value="{{ old('hilang', 0) }}">
+                    @error('hilang')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="luka_luka" class="form-label">Luka_Luka</label>
-                    <input type="number" class="form-control" id="luka_luka" name="luka_luka" required value="{{ old('luka_luka', 0) }}">
+                    <input type="number" class="form-control" id="luka_luka" name="luka_luka" required
+                        value="{{ old('luka_luka', 0) }}">
+                    @error('luka_luka')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="mengungsi" class="form-label">Mengungsi</label>
-                    <input type="number" class="form-control" id="mengungsi" name="mengungsi" required value="{{ old('mengungsi', 0) }}">
+                    <input type="number" class="form-control" id="mengungsi" name="mengungsi" required
+                        value="{{ old('mengungsi', 0) }}">
+                    @error('mengungsi')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="rumah_rusak_ringan" class="form-label">Rumah Rusak Ringan</label>
                     <input type="number" class="form-control" id="rumah_rusak_ringan" name="rumah_rusak_ringan"
-                    required value="{{ old('rumah_rusak_ringan', 0) }}">
+                        required value="{{ old('rumah_rusak_ringan', 0) }}">
+                    @error('rumah_rusak_ringan')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="rumah_rusak_sedang" class="form-label">Rumah Rusak Sedang</label>
                     <input type="number" class="form-control" id="rumah_rusak_sedang" name="rumah_rusak_sedang"
-                    required value="{{ old('rumah_rusak_sedang', 0) }}">
+                        required value="{{ old('rumah_rusak_sedang', 0) }}">
+                    @error('rumah_rusak_sedang')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="rumah_rusak_berat" class="form-label">Rumah Rusak Berat</label>
-                    <input type="number" class="form-control" id="rumah_rusak_berat" name="rumah_rusak_berat"
-                    required value="{{ old('rumah_rusak_berat', 0) }}">
+                    <input type="number" class="form-control" id="rumah_rusak_berat" name="rumah_rusak_berat" required
+                        value="{{ old('rumah_rusak_berat', 0) }}">
+                    @error('rumah_rusak_berat')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="rumah_terendam" class="form-label">Rumah Terendam</label>
-                    <input type="number" class="form-control" id="rumah_terendam" name="rumah_terendam"
-                    required value="{{ old('rumah_terendam', 0) }}">
+                    <input type="number" class="form-control" id="rumah_terendam" name="rumah_terendam" required
+                        value="{{ old('rumah_terendam', 0) }}">
+                    @error('rumah_terendam')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="fas_pendidikan" class="form-label">Fas. Pendidikan</label>
-                    <input type="number" class="form-control" id="fas_pendidikan" name="fas_pendidikan"
-                    required value="{{ old('fas_pendidikan', 0) }}">
+                    <input type="number" class="form-control" id="fas_pendidikan" name="fas_pendidikan" required
+                        value="{{ old('fas_pendidikan', 0) }}">
+                    @error('fas_pendidikan')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="fas_kesehatan" class="form-label">Fas. Kesehatan</label>
-                    <input type="number" class="form-control" id="fas_kesehatan" name="fas_kesehatan" required value="{{ old('fas_kesehatan', 0) }}">
+                    <input type="number" class="form-control" id="fas_kesehatan" name="fas_kesehatan" required
+                        value="{{ old('fas_kesehatan', 0) }}">
+                    @error('fas_kesehatan')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="fas_umum" class="form-label">Fas. Umum</label>
-                    <input type="number" class="form-control" id="fas_umum" name="fas_umum" required value="{{ old('fas_umum', 0) }}">
+                    <input type="number" class="form-control" id="fas_umum" name="fas_umum" required
+                        value="{{ old('fas_umum', 0) }}">
+                    @error('fas_umum')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="fas_ibadah" class="form-label">Fas. Ibadah</label>
-                    <input type="number" class="form-control" id="fas_ibadah" name="fas_ibadah" required value="{{ old('fas_ibadah', 0) }}">
+                    <input type="number" class="form-control" id="fas_ibadah" name="fas_ibadah" required
+                        value="{{ old('fas_ibadah', 0) }}">
+                    @error('fas_ibadah')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
 
                 <button type="submit" class="btn btn-primary">Create</button>

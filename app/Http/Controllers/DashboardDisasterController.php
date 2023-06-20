@@ -63,12 +63,12 @@ class DashboardDisasterController extends Controller
             'fas_ibadah' => 'sometimes|required',
             'fas_kesehatan' => 'sometimes|required',
             'fas_umum' => 'sometimes|required',
-            'waktu' => 'required|max:10'
+            'waktu' => 'required'
         ]);
 
         Disaster::create($validatedData);
 
-        return redirect('/dashboard/disasters')->with('berhasil', 'Data kebencanaan baru sudah ditambah!');
+        return redirect('/dashboard/disasters')->with('success', 'New Disaster has been added!');
     }
 
     /**
@@ -79,7 +79,7 @@ class DashboardDisasterController extends Controller
      */
     public function show(Disaster $disaster)
     {
-        //
+      //
     }
 
     /**
@@ -93,7 +93,9 @@ class DashboardDisasterController extends Controller
         return view('dashboard.disasters.edit', [
             'title' => 'Edit',
             'disaster' => $disaster,
-            'disasters' => Disaster::all()
+            'disasters' => Disaster::all(),
+            'disasterCategories' => DisasterCategory::all(),
+            'subdistricts' => Subdistrict::all()
         ]);
     }
 
@@ -106,7 +108,35 @@ class DashboardDisasterController extends Controller
      */
     public function update(Request $request, Disaster $disaster)
     {
-        //
+        $rules = [
+            'disaster_category_id' => 'required',
+            'subdistrict_id' => 'required',
+            'penyebab' => 'required|max:255',
+            'location' => 'required',
+            'hilang' => 'sometimes|required',
+            'meninggal_dunia' => 'sometimes|required',
+            'mengungsi' => 'sometimes|required',
+            'luka_luka' => 'sometimes|required',
+            'rumah_rusak_ringan' => 'sometimes|required',
+            'rumah_rusak_sedang' => 'sometimes|required',
+            'rumah_rusak_berat' => 'sometimes|required',
+            'rumah_terendam' => 'sometimes|required',
+            'fas_pendidikan' => 'sometimes|required',
+            'fas_ibadah' => 'sometimes|required',
+            'fas_kesehatan' => 'sometimes|required',
+            'fas_umum' => 'sometimes|required',
+            'waktu' => 'required|max:10'
+        ];
+
+        if ($request->slug != $disaster->slug) {
+            $rules['slug'] = 'required|unique:disasters';
+        }
+
+        $validatedData = $request->validate($rules);
+        Disaster::where('id', $disaster->id)
+            ->update($validatedData);
+
+        return redirect('/dashboard/disasters')->with('success', 'Disanter has been updated!');
     }
 
     /**
@@ -117,7 +147,8 @@ class DashboardDisasterController extends Controller
      */
     public function destroy(Disaster $disaster)
     {
-        //
+        Disaster::destroy($disaster->id);
+        return redirect('/dashboard/disasters')->with('success', 'Disaster has been deleted!');
     }
 
     public function checkSlug(Request $request)
