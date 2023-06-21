@@ -80,7 +80,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="pages/widgets.html" class="nav-link">
+                <a href="/dashboard/agendas" class="nav-link {{ Request::is('dashboard/agendas*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-file"></i>
                     <p>
                         Agenda

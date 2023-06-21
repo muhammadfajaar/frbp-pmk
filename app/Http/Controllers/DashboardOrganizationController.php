@@ -63,7 +63,7 @@ class DashboardOrganizationController extends Controller
     public function edit(Organization $organization)
     {
         return view('dashboard.organizations.edit', [
-            'title' => 'Edit Organisasi',
+            'title' => 'Organisasi',
             'organization' => $organization,
             'organizations' => Organization::all()
         ]);

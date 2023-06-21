@@ -6,13 +6,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Halaman {{ $title }}</h1>
+                    <h1 class="m-0">Edit {{ $title }}</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Post</li>
-                        <li class="breadcrumb-item">{{ $title }}</li>
+                        <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                        <li class="breadcrumb-item active"><a href="/dashboard/posts">Berita</a></li>
+                        <li class="breadcrumb-item">Edit {{ $title }}</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -26,7 +26,7 @@
                @method('put')
                 @csrf
                 <div class="form-group">
-                    <label for="title" class="form-label">Title</label>
+                    <label for="title" class="form-label">Judul</label>
                     <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
                         name="title" required autofocus value="{{ old('title', $post->title) }}">
                     @error('title')
@@ -46,7 +46,7 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="category" class="form-label">Category</label>
+                    <label for="category" class="form-label">Kategori</label>
                     <select class="custom-select" name="category_id">
                         @foreach ($categories as $category)
                             @if (old('category_id', $post->category_id) == $category->id)
@@ -58,7 +58,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="image" class="form-label">Posts Image</label>
+                    <label for="image" class="form-label">Gambar Berita</label>
                     <input type="hidden" name="oldImage" value="{{ $post->image }}">
                     @if ($post->image)
                         <img src="{{ asset('storage/' . $post->image) }}" class="img-preview img-fluid  mb-3 col-sm-5 d-block">
@@ -74,7 +74,7 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="body" class="form-label">Body</label>
+                    <label for="body" class="form-label">Konten</label>
                     @error('body')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
@@ -82,7 +82,7 @@
                     <trix-editor input="body"></trix-editor>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Update Post</button>
+                <button type="submit" class="btn btn-primary">Perbarui Berita</button>
             </form>
         </div>
     </section>

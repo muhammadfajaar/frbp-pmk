@@ -6,13 +6,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Halaman Tambah Kebencanaan</h1>
+                    <h1 class="m-0">Tambah {{ $title }}</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/">home</a></li>
-                        <li class="breadcrumb-item active"><a href="/dashboard/disasters"> data kebencanaan</a></li>
-                        <li class="breadcrumb-item active">tambah kebencanaan</li>
+                        <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                        <li class="breadcrumb-item active"><a href="/dashboard/disasters">{{ $title }}</a></li>
+                        <li class="breadcrumb-item active">Tambah {{ $title }}</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -212,7 +212,7 @@
                     @enderror
                 </div>
 
-                <button type="submit" class="btn btn-primary">Create</button>
+                <button type="submit" class="btn btn-primary">Tambah Kebencanaan</button>
 
             </form>
         </div>

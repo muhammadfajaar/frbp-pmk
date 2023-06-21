@@ -6,12 +6,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Halaman Edit Kebencanaan</h1>
+                    <h1 class="m-0">Edit {{ $title }}</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/">home</a></li>
-                        <li class="breadcrumb-item active">edit kebencanaan</li>
+                        <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/dashboard/disasters">{{ $title }}</a></li>
+                        <li class="breadcrumb-item active">Edit {{ $title }}</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -204,7 +205,7 @@
                         </div>
                     @enderror
                 </div>
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="submit" class="btn btn-primary">Edit Kebencanaan</button>
             </form>
         </div>
     </section>

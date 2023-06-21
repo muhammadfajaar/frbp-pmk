@@ -31,7 +31,7 @@ class DashboardDisasterController extends Controller
     public function create()
     {
         return view('dashboard.disasters.create', [
-            'title' => 'Create',
+            'title' => 'Kebencanaan',
             'disasterCategories' => DisasterCategory::all(),
             'subdistricts' => Subdistrict::all()
         ]);
@@ -91,7 +91,7 @@ class DashboardDisasterController extends Controller
     public function edit(Disaster $disaster)
     {
         return view('dashboard.disasters.edit', [
-            'title' => 'Edit',
+            'title' => 'Kebencanaan',
             'disaster' => $disaster,
             'disasters' => Disaster::all(),
             'disasterCategories' => DisasterCategory::all(),
@@ -136,7 +136,7 @@ class DashboardDisasterController extends Controller
         Disaster::where('id', $disaster->id)
             ->update($validatedData);
 
-        return redirect('/dashboard/disasters')->with('success', 'Disanter has been updated!');
+        return redirect('/dashboard/disasters')->with('success', 'Disaster has been updated!');
     }
 
     /**

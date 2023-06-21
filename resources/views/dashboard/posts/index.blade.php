@@ -6,11 +6,11 @@
       <div class="container-fluid">
           <div class="row mb-2">
               <div class="col-sm-6">
-                  <h1 class="m-0">Halaman {{ $title }}</h1>
+                  <h1 class="m-0">Data {{ $title }}</h1>
               </div><!-- /.col -->
               <div class="col-sm-6">
                   <ol class="breadcrumb float-sm-right">
-                      <li class="breadcrumb-item"><a href="#">Home</a></li>
+                      <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
                       <li class="breadcrumb-item active">{{ $title }}</li>
                   </ol>
               </div><!-- /.col -->
@@ -53,13 +53,13 @@
                   </div>
                   <!-- /.card-header -->
                   <div class="card-body table-responsive p-0">
-                      <table class="table table-hover text-nowrap">
+                      <table class="table table-bordered">
                           <thead>
                               <tr>
                                   <th>No</th>
-                                  <th>Title</th>
-                                  <th>Category</th>
-                                  <th>Action</th>
+                                  <th>Judul</th>
+                                  <th>Kategori</th>
+                                  <th>Aksi</th>
                               </tr>
                           </thead>
                           <tbody>
@@ -69,14 +69,40 @@
                                       <td>{{ $post->title }}</td>
                                       <td>{{ $post->category->name }}</td>
                                       <td>
-                                          <a href="/dashboard/posts/{{ $post->slug }}" class="badge bg-info">View</a>
-                                          <a href="/dashboard/posts/{{ $post->slug }}/edit" class="badge bg-warning">Edit</a>
-                                          <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
-                                              @method('delete')
-                                              @csrf
-                                              <button class="badge bg-danger border-0" onclick="return confirm('Are you sure')">Delete</button>
-                                          </form>
-                                      </td>
+                                        <a href="/dashboard/posts/{{ $post->slug }}" class="btn btn-info btn-sm">View</a>
+                                        <a href="/dashboard/posts/{{ $post->slug }}/edit" class="btn btn-warning btn-sm">Edit</a>
+                                        <form action="/dashboard/posts/{{ $post->slug }}" method="post"
+                                            class="d-inline">
+                                            @method('delete')
+                                            @csrf
+                                            <button class="btn btn-danger btn-sm" type="button" data-toggle="modal"
+                                                data-target="#confirmDeleteModal">Hapus</button>
+
+                                            <div class="modal" id="confirmDeleteModal" tabindex="-1" role="dialog"
+                                                aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="confirmDeleteModalLabel">Hapus {{ $title }}</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>Apakah kamu serius untuk menghapus data {{ $title }}?</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Batal</button>
+                                                            <button type="submit"
+                                                                class="btn btn-danger">Hapus</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </td>
                                   </tr>
                               @endforeach
                           </tbody>

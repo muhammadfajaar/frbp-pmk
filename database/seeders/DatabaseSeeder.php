@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Agenda;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Disaster;
@@ -27,7 +28,6 @@ class DatabaseSeeder extends Seeder
          'email' => 'admin@gmail.com',
          'password' => bcrypt('password')
       ]);
-
       User::create([
          'name' => 'Author',
          'username' => 'author',
@@ -41,12 +41,10 @@ class DatabaseSeeder extends Seeder
          'name' => 'Web Programming',
          'slug' => 'web-programming'
       ]);
-
       Category::create([
          'name' => 'Web Design',
          'slug' => 'web-design'
       ]);
-
       Category::create([
          'name' => 'Personal',
          'slug' => 'personal'
@@ -77,18 +75,82 @@ class DatabaseSeeder extends Seeder
          'name' => 'Tanah Longsor',
          'slug' => 'tanah-longsor'
       ]);
+      DisasterCategory::create([
+         'name' => 'Cuaca Ekstrem',
+         'slug' => 'cuaca-ekstrem'
+      ]);
+      DisasterCategory::create([
+         'name' => 'Kahutla',
+         'slug' => 'karhutla'
+      ]);
+      DisasterCategory::create([
+         'name' => 'Gempabumi',
+         'slug' => 'gempabumi'
+      ]);
+      DisasterCategory::create([
+         'name' => 'Gelombang Pasang dan Abrasi',
+         'slug' => 'gelombang-pasang-dan-abrasi'
+      ]);
+      DisasterCategory::create([
+         'name' => 'Kekeringan',
+         'slug' => 'kekerigan'
+      ]);
+      DisasterCategory::create([
+         'name' => 'Erupsi Guniung Api',
+         'slug' => 'erupsi-gunung-api'
+      ]);
 
       Subdistrict::create([
-         'name' => 'Proppo',
-         'slug' => 'proppo'
+         'name' => 'Batu Marmar',
+         'slug' => 'batu-marmar'
+      ]);
+      Subdistrict::create([
+         'name' => 'Galis',
+         'slug' => 'galis'
+      ]);
+      Subdistrict::create([
+         'name' => 'Kadur',
+         'slug' => 'kadur'
+      ]);
+      Subdistrict::create([
+         'name' => 'Larangan',
+         'slug' => 'larangan'
+      ]);
+      Subdistrict::create([
+         'name' => 'Pademawu',
+         'slug' => 'pademawu'
+      ]);
+      Subdistrict::create([
+         'name' => 'Pakong',
+         'slug' => 'pakong'
+      ]);
+      Subdistrict::create([
+         'name' => 'Pasean',
+         'slug' => 'pasean'
+      ]);
+      Subdistrict::create([
+         'name' => 'Palenggaan',
+         'slug' => 'palenggaan'
       ]);
       Subdistrict::create([
          'name' => 'Pamekasan',
          'slug' => 'pamekasan'
       ]);
       Subdistrict::create([
+         'name' => 'Pagentenan',
+         'slug' => 'pagentenan'
+      ]);
+      Subdistrict::create([
+         'name' => 'Proppo',
+         'slug' => 'proppo'
+      ]);
+      Subdistrict::create([
          'name' => 'Tlanakan',
-         'slug' => 'Tlanakan'
+         'slug' => 'tlanakan'
+      ]);
+      Subdistrict::create([
+         'name' => 'Waru',
+         'slug' => 'waru'
       ]);
 
       Disaster::create([
@@ -129,7 +191,7 @@ class DatabaseSeeder extends Seeder
          'fas_kesehatan' => 0,
          'fas_umum' => 3,
          'location' => 'Ds. Proppo, Kab.Pamekasan',
-         'waktu' => '11s-06-2023'
+         'waktu' => '11-06-2023'
       ]);
       Disaster::create([
          'disaster_category_id' => 2,
@@ -170,6 +232,43 @@ class DatabaseSeeder extends Seeder
          'fas_umum' => 3,
          'location' => 'Ds. Larangan Tokol, Kab.Pamekasan',
          'waktu' => '20-06-2023'
+      ]);
+
+      Agenda::create([
+         'user_id' => 1,
+         'date' => '23/06/2023',
+         'time' => '08:00-09:00',
+         'activity' => 'Acara Launcing Website FRPB   ',
+         'slug' => 'acara-launcing-website-frpb',
+         'location' => 'Base Camp FRPB',
+         'deskription' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae quod ratione architecto laudantium optio quaerat molestias facere necessitatibus deserunt at doloribus ab consequatur veritatis nemo repellat nostrum in, officia deleniti. Laboriosam adipisci, suscipit dolores odit perspiciatis delectus voluptatum illum, iusto sapiente optio voluptate mollitia asperiores? Est veritatis cum non officiis.'
+      ]);
+      Agenda::create([
+         'user_id' => 2,
+         'date' => '24/06/2023',
+         'time' => '09:00-09:00',
+         'activity' => 'Pelatihan Anggota Baru',
+         'slug' => 'pelatihan-anggota-baru',
+         'location' => 'Kantor',
+         'deskription' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus aliquid laboriosam nihil error perspiciatis voluptates ipsam asperiores ullam magnam ea nemo consequuntur tempora quo sapiente, quam impedit, ad molestias corporis?'
+      ]);
+      Agenda::create([
+         'user_id' => 3,
+         'date' => '25/06/2023',
+         'time' => '10:00-09:00',
+         'activity' => 'Pelatihan Peningkatan Kerja',
+         'slug' => 'pelatihan-peningkatan-kerja',
+         'location' => 'Base Camp FRPB',
+         'deskription' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam voluptatibus voluptatum quos, ex quis consequuntur!'
+      ]);
+      Agenda::create([
+         'user_id' => 1,
+         'date' => '21/06/2023',
+         'time' => '08:00-09:00',
+         'activity' => 'Rapat Bersama Mahasiswa',
+         'slug' => 'rapat-bersama-mahasiswa',
+         'location' => 'Monumen Arek Lancor',
+         'deskription' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt, aspernatur eligendi eveniet sapiente omnis dolorem eos quae, reprehenderit et deleniti in ratione porro nam aut sit quam fugit voluptas distinctio cupiditate quos, explicabo nemo aliquid. Voluptatem, fuga voluptas? Esse cum perferendis tenetur cupiditate neque corporis?'
       ]);
    }
 }

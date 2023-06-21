@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Halaman Data {{ $title }}</h1>
+                    <h1 class="m-0">Data {{ $title }}</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/dashboard">dashboard</a></li>
-                        <li class="breadcrumb-item active">kebencanaan</li>
+                        <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                        <li class="breadcrumb-item active">Kebencanaan</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -62,7 +62,7 @@
                                     <th>Kecamatan</th>
                                     <th>Lokasi</th>
                                     <th>Penyebab</th>
-                                    <th>Meninggal</th>
+                                    {{-- <th>Meninggal</th>
                                     <th>Hilang</th>
                                     <th>Luka-Luka</th>
                                     <th>Mengungsi</th>
@@ -73,7 +73,7 @@
                                     <th>Fas. Pendidikan</th>
                                     <th>Fas. Ibadah</th>
                                     <th>Fas. Kesehatan</th>
-                                    <th>Fas. Umum</th>
+                                    <th>Fas. Umum</th> --}}
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -86,7 +86,7 @@
                                         <td>{{ $disaster->subdistrict->name }}</td>
                                         <td>{{ $disaster->location }}</td>
                                         <td>{{ $disaster->penyebab }}</td>
-                                        <td>{{ $disaster->meninggal_dunia }}</td>
+                                        {{-- <td>{{ $disaster->meninggal_dunia }}</td>
                                         <td>{{ $disaster->hilang }}</td>
                                         <td>{{ $disaster->luka_luka }}</td>
                                         <td>{{ $disaster->mengungsi }}</td>
@@ -97,18 +97,48 @@
                                         <td>{{ $disaster->fas_pendidikan }}</td>
                                         <td>{{ $disaster->fas_ibadah }}</td>
                                         <td>{{ $disaster->fas_kesehatan }}</td>
-                                        <td>{{ $disaster->fas_umum }}</td>
+                                        <td>{{ $disaster->fas_umum }}</td> --}}
                                         <td>
-                                            {{-- <a href="/dashboard/disasters/{{ $disaster->slug }}" class="badge bg-info">View</a> --}}
-                                            <a href="/dashboard/disasters/{{ $disaster->slug }}/edit"
-                                                class="badge bg-warning">Edit</a>
-                                            <form action="/dashboard/disasters/{{ $disaster->slug }}" method="post"
-                                                class="d-inline">
-                                                @method('delete')
-                                                @csrf
-                                                <button class="badge bg-danger border-0"
-                                                    onclick="return confirm('Are you sure')">Delete</button>
-                                            </form>
+                                            <div class="d-inline-flex">
+                                                <a href="/dashboard/disasters/{{ $disaster->slug }}"
+                                                    class="btn btn-info mb-3 btn-sm mx-1">View</a>
+                                                <a href="/dashboard/disasters/{{ $disaster->slug }}/edit"
+                                                    class="btn btn-warning mb-3 btn-sm mx-2">Edit</a>
+                                                <form action="/dashboard/disasters/{{ $disaster->slug }}" method="post"
+                                                    class="d-inline">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button class="btn btn-danger btn-sm" type="button" data-toggle="modal"
+                                                        data-target="#confirmDeleteModal">Hapus</button>
+
+                                                    <div class="modal" id="confirmDeleteModal" tabindex="-1"
+                                                        role="dialog" aria-labelledby="confirmDeleteModalLabel"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="confirmDeleteModalLabel">
+                                                                        Hapus {{ $title }}</h5>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p>Apakah kamu serius untuk menghapus data
+                                                                        {{ $title }}?</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Batal</button>
+                                                                    <button type="submit"
+                                                                        class="btn btn-danger">Hapus</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -123,4 +153,15 @@
         <!-- /.row -->
     </section>
     {{-- Main Content End --}}
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 @endsection
