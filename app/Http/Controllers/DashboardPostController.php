@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use \Cviebrock\EloquentSluggable\Services\SlugService;
-
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -64,7 +63,7 @@ class DashboardPostController extends Controller
 
       Post::create($validateData);
 
-      return redirect('/dashboard/posts')->with('success', 'New Post has been updated!');
+      return redirect('/dashboard/posts')->with('success', 'Data berita baru berhasil ditambah!');
    }
 
    /**
@@ -131,7 +130,7 @@ class DashboardPostController extends Controller
       Post::where('id', $post->id)
          ->update($validateData);
 
-      return redirect('/dashboard/posts')->with('success', 'Post has been updated!');
+      return redirect('/dashboard/posts')->with('success', 'Data berita berhasil diubah!');
    }
 
    /**
@@ -146,7 +145,7 @@ class DashboardPostController extends Controller
          Storage::delete($post->image);
       }
       Post::destroy($post->id);
-      return redirect('/dashboard/posts')->with('success', 'New Post has been deleted!');
+      return redirect('/dashboard/posts')->with('success', 'Data berita berhasi dihapus!');
    }
 
    public function checkSlug(Request $request)

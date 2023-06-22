@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Profile extends Model
+class Submenu extends Model
 {
     use HasFactory;
 
     protected $guarded = ['id'];
 
-    public function submenu()
+    public function profile()
     {
-        return $this->hasMany(submenu::class);
+       return $this->belongsTo(Profile::class);
     }
 }

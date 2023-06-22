@@ -15,6 +15,7 @@ use App\Http\Controllers\DashboardAgendaController;
 use App\Http\Controllers\DashboardOrganizationController;
 use App\Http\Controllers\DashboardDisasterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -107,8 +108,8 @@ Route::get('/dashboard/agendas/checkSlug', [DashboardAgendaController::class, 'c
 Route::resource('/dashboard/agendas', DashboardAgendaController::class)->middleware('auth');
 
 // halaman dashboard profil
-// Route::get('/dashboard/profiles/checkSlug', [DashboardProfileController::class, 'checkSlug'])->middleware('auth');
-// Route::resource('/dashboard/profiles', DashboardProfleController::class)->middleware('auth');
+Route::get('/dashboard/profiles/checkSlug', [DashboardProfileController::class, 'checkSlug'])->middleware('auth');
+Route::resource('/dashboard/profiles', DashboardProfileController::class)->middleware('auth');
 
 
 

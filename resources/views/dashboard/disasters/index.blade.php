@@ -11,7 +11,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-                        <li class="breadcrumb-item active">Kebencanaan</li>
+                        <li class="breadcrumb-item active">{{ $title }}</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -62,18 +62,6 @@
                                     <th>Kecamatan</th>
                                     <th>Lokasi</th>
                                     <th>Penyebab</th>
-                                    {{-- <th>Meninggal</th>
-                                    <th>Hilang</th>
-                                    <th>Luka-Luka</th>
-                                    <th>Mengungsi</th>
-                                    <th>Rumah Rusak Rigan</th>
-                                    <th>Rumah Rusak Sedang</th>
-                                    <th>Rumah Rusak Berat</th>
-                                    <th>Rumah Terendam</th>
-                                    <th>Fas. Pendidikan</th>
-                                    <th>Fas. Ibadah</th>
-                                    <th>Fas. Kesehatan</th>
-                                    <th>Fas. Umum</th> --}}
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -86,24 +74,10 @@
                                         <td>{{ $disaster->subdistrict->name }}</td>
                                         <td>{{ $disaster->location }}</td>
                                         <td>{{ $disaster->penyebab }}</td>
-                                        {{-- <td>{{ $disaster->meninggal_dunia }}</td>
-                                        <td>{{ $disaster->hilang }}</td>
-                                        <td>{{ $disaster->luka_luka }}</td>
-                                        <td>{{ $disaster->mengungsi }}</td>
-                                        <td>{{ $disaster->rumah_rusak_ringan }}</td>
-                                        <td>{{ $disaster->rumah_rusak_sedang }}</td>
-                                        <td>{{ $disaster->rumah_rusak_berat }}</td>
-                                        <td>{{ $disaster->rumah_terendam }}</td>
-                                        <td>{{ $disaster->fas_pendidikan }}</td>
-                                        <td>{{ $disaster->fas_ibadah }}</td>
-                                        <td>{{ $disaster->fas_kesehatan }}</td>
-                                        <td>{{ $disaster->fas_umum }}</td> --}}
                                         <td>
                                             <div class="d-inline-flex">
-                                                <a href="/dashboard/disasters/{{ $disaster->slug }}"
-                                                    class="btn btn-info mb-3 btn-sm mx-1">View</a>
                                                 <a href="/dashboard/disasters/{{ $disaster->slug }}/edit"
-                                                    class="btn btn-warning mb-3 btn-sm mx-2">Edit</a>
+                                                    class="btn btn-warning btn-sm mx-1">Edit</a>
                                                 <form action="/dashboard/disasters/{{ $disaster->slug }}" method="post"
                                                     class="d-inline">
                                                     @method('delete')

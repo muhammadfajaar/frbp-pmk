@@ -68,7 +68,7 @@ class DashboardDisasterController extends Controller
 
         Disaster::create($validatedData);
 
-        return redirect('/dashboard/disasters')->with('success', 'New Disaster has been added!');
+        return redirect('/dashboard/disasters')->with('success', 'Kebencannan baru berhasil ditambah!');
     }
 
     /**
@@ -79,7 +79,7 @@ class DashboardDisasterController extends Controller
      */
     public function show(Disaster $disaster)
     {
-      //
+        //
     }
 
     /**
@@ -136,7 +136,7 @@ class DashboardDisasterController extends Controller
         Disaster::where('id', $disaster->id)
             ->update($validatedData);
 
-        return redirect('/dashboard/disasters')->with('success', 'Disaster has been updated!');
+        return redirect('/dashboard/disasters')->with('success', 'Kebencanaan berhasil diubah!');
     }
 
     /**
@@ -148,7 +148,7 @@ class DashboardDisasterController extends Controller
     public function destroy(Disaster $disaster)
     {
         Disaster::destroy($disaster->id);
-        return redirect('/dashboard/disasters')->with('success', 'Disaster has been deleted!');
+        return redirect('/dashboard/disasters')->with('success', 'Kebencanaan berhasi dihapus!');
     }
 
     public function checkSlug(Request $request)

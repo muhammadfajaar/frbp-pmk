@@ -17,7 +17,8 @@ class CreateAgendasTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('date');
-            $table->string('time');
+            $table->string('start_time');
+            $table->string('end_time');
             $table->string('activity');
             $table->string('slug')->uniqid();
             $table->string('location');

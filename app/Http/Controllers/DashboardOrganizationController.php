@@ -104,7 +104,7 @@ class DashboardOrganizationController extends Controller
 
         $organization->update($validatedData);
 
-        return redirect('/dashboard/organizations')->with('success', 'Organization data has been updated!');
+        return redirect('/dashboard/organizations')->with('success', 'Data Organisasi Berhasi diubah!');
     }
 
     /**

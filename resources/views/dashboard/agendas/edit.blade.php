@@ -21,12 +21,13 @@
     <!-- /.content-header -->
     <section class="content">
         <div class="col-lg-8">
-            <form method="post" action="/dashboard/agendas" enctype="multipart/form-data" class="mb-5">
+            <form method="post" action="/dashboard/agendas/{{ $agenda->slug }}" enctype="multipart/form-data" class="mb-5">
+              @method('put')
                 @csrf
                 <div class="form-group">
                     <label for="date" class="form-label">Tanggal</label>
                     <input type="date" class="form-control @error('date') is-invalid @enderror" id="date"
-                        name="date" required autofocus value="{{ old('date') }}">
+                        name="date" required value="{{ old('date', isset($agenda) ? \Carbon\Carbon::parse($agenda->date)->format('Y-m-d') : '') }}">
                     @error('date')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -36,7 +37,7 @@
                 <div class="form-group">
                     <label for="start_time" class="form-label">Waktu Mulai</label>
                     <input type="time" class="form-control @error('start_time') is-invalid @enderror" id="start_time"
-                        name="start_time" required autofocus value="{{ old('start_time') }}">
+                        name="start_time" required value="{{ old('start_time', $agenda->start_time) }}">
                     @error('start_time')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -47,7 +48,7 @@
                 <div class="form-group">
                     <label for="end_time" class="form-label">Waktu Selesai</label>
                     <input type="time" class="form-control @error('end_time') is-invalid @enderror" id="end_time"
-                        name="end_time" required value="{{ old('end_time') }}">
+                        name="end_time" required value="{{ old('end_time', $agenda->end_time) }}">
                     @error('end_time')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -58,7 +59,7 @@
                 <div class="form-group">
                     <label for="activity" class="form-label">Aktifitas</label>
                     <input type="text" class="form-control @error('activity') is-invalid @enderror" id="activity"
-                        name="activity" required autofocus value="{{ old('activity') }}">
+                        name="activity" required value="{{ old('activity', $agenda->activity) }}">
                     @error('activity')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -68,7 +69,7 @@
                 <div class="form-group">
                     <label for="slug" class="form-label">Slug</label>
                     <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug"
-                        name="slug" required value="{{ old('slug') }}">
+                        name="slug" required value="{{ old('slug', $agenda->slug) }}">
                     @error('slug')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -78,7 +79,7 @@
                 <div class="form-group">
                     <label for="location" class="form-label">Lokasi</label>
                     <input type="location" class="form-control @error('location') is-invalid @enderror" id="location"
-                        name="location" required autofocus value="{{ old('location') }}">
+                        name="location" required value="{{ old('location', $agenda->location) }}">
                     @error('location')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -101,11 +102,11 @@
                     @error('deskription')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
-                    <input id="deskription" type="hidden" name="deskription" value="{{ old('deskription') }}">
+                    <input id="deskription" type="hidden" name="deskription" value="{{ old('deskription', $agenda->deskription) }}">
                     <trix-editor input="deskription"></trix-editor>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Buat Berita</button>
+                <button type="submit" class="btn btn-primary">Ubah Agenda</button>
             </form>
         </div>
     </section>

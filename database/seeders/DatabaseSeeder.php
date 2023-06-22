@@ -10,6 +10,8 @@ use App\Models\DisasterCategory;
 use App\Models\Organization;
 use App\Models\Post;
 use App\Models\Subdistrict;
+use App\Models\Profile;
+use App\Models\Submenu;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -236,8 +238,9 @@ class DatabaseSeeder extends Seeder
 
       Agenda::create([
          'user_id' => 1,
-         'date' => '23/06/2023',
-         'time' => '08:00-09:00',
+         'date' => '23-06-2023',
+         'start_time' => '08:00',
+         'end_time' => '09:00',
          'activity' => 'Acara Launcing Website FRPB   ',
          'slug' => 'acara-launcing-website-frpb',
          'location' => 'Base Camp FRPB',
@@ -245,8 +248,9 @@ class DatabaseSeeder extends Seeder
       ]);
       Agenda::create([
          'user_id' => 2,
-         'date' => '24/06/2023',
-         'time' => '09:00-09:00',
+         'date' => '24-06-2023',
+         'start_time' => '10:00',
+         'end_time' => '11:00',
          'activity' => 'Pelatihan Anggota Baru',
          'slug' => 'pelatihan-anggota-baru',
          'location' => 'Kantor',
@@ -254,8 +258,9 @@ class DatabaseSeeder extends Seeder
       ]);
       Agenda::create([
          'user_id' => 3,
-         'date' => '25/06/2023',
-         'time' => '10:00-09:00',
+         'date' => '25-06-2023',
+         'start_time' => '07:00',
+         'end_time' => '08:00',
          'activity' => 'Pelatihan Peningkatan Kerja',
          'slug' => 'pelatihan-peningkatan-kerja',
          'location' => 'Base Camp FRPB',
@@ -263,12 +268,45 @@ class DatabaseSeeder extends Seeder
       ]);
       Agenda::create([
          'user_id' => 1,
-         'date' => '21/06/2023',
-         'time' => '08:00-09:00',
+         'date' => '21-06-2023',
+         'start_time' => '06:00',
+         'end_time' => '07:00',
          'activity' => 'Rapat Bersama Mahasiswa',
          'slug' => 'rapat-bersama-mahasiswa',
          'location' => 'Monumen Arek Lancor',
          'deskription' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt, aspernatur eligendi eveniet sapiente omnis dolorem eos quae, reprehenderit et deleniti in ratione porro nam aut sit quam fugit voluptas distinctio cupiditate quos, explicabo nemo aliquid. Voluptatem, fuga voluptas? Esse cum perferendis tenetur cupiditate neque corporis?'
+      ]);
+
+      submenu::create([
+         'name' => 'Struktur Organisasi',
+         'slug' => 'struktur-organisasi'
+      ]);
+      Submenu::create([
+         'name' => 'Visi-Misi',
+         'slug' => 'visi-misi'
+      ]);
+      Submenu::create([
+         'name' => 'Sejarah Organisasi',
+         'slug' => 'sejarah-organisasi'
+      ]);
+
+      Profile::create([
+         'submenu_id' => 1,
+         'name' => 'Struktur Organisasi',
+         'slug' => 'struktur-organisasi',
+         'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis rem qui, provident quasi, nihil, veniam tempore nam ex ducimus at doloremque magni odio. Et quaerat sapiente voluptatum debitis nisi repellendus veniam unde tempora nesciunt ipsa, enim in officiis rem quas at? Consectetur ipsa velit quia fugit deserunt officia earum quibusdam explicabo quo, animi, sit dignissimos voluptatem iusto, facilis similique reprehenderit nemo modi perferendis fugiat. Quam, quod necessitatibus. Facere eos delectus corporis ratione magnam fugit officiis dolorum! Quaerat quasi explicabo rem autem alias doloribus deserunt in officiis, repellat aut necessitatibus. Voluptates, reiciendis. Ratione nemo itaque a delectus et cumque nobis repellendus.'
+      ]);
+      Profile::create([
+         'submenu_id' => 2,
+         'name' => 'Visi-Misi',
+         'slug' => 'visi-misi',
+         'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis rem qui, provident quasi, nihil, veniam tempore nam ex ducimus at doloremque magni odio. Et quaerat sapiente voluptatum debitis nisi repellendus veniam unde tempora nesciunt ipsa, enim in officiis rem quas at? Consectetur ipsa velit quia fugit deserunt officia earum quibusdam explicabo quo, animi, sit dignissimos voluptatem iusto, facilis similique reprehenderit nemo modi perferendis fugiat. Quam, quod necessitatibus.'
+      ]);
+      Profile::create([
+         'submenu_id' => 3,
+         'name' => 'Sejarah Organisasi',
+         'slug' => 'sejarah-organisasi',
+         'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis rem qui, provident quasi, nihil, veniam tempore nam ex ducimus at doloremque magni odio. Et quaerat sapiente voluptatum debitis nisi repellendus veniam unde tempora nesciunt ipsa, enim in officiis rem quas at? Consectetur ipsa velit quia fugit deserunt officia earum quibusdam explicabo quo, animi, sit dignissimos voluptatem iusto, facilis similique reprehenderit nemo modi perferendis fugiat. Quam, quod necessitatibus. Facere eos delectus corporis ratione magnam fugit officiis dolorum! Quaerat quasi explicabo rem autem alias doloribus deserunt in officiis, repellat aut necessitatibus. Voluptates, reiciendis. Ratione nemo itaque a delectus et cumque nobis repellendus.Et quaerat sapiente voluptatum debitis nisi repellendus veniam unde tempora nesciunt ipsa, enim in officiis rem quas at? Consectetur ipsa velit quia fugit deserunt officia earum quibusdam explicabo quo, animi, sit dignissimos voluptatem iusto, facilis similique reprehenderit nemo modi perferendis fugiat.'
       ]);
    }
 }

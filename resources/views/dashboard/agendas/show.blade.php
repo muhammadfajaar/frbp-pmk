@@ -11,24 +11,23 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-                        <li class="breadcrumb-item active"><a href="/dashboard/posts">Berita</a></li>
+                        <li class="breadcrumb-item"><a href="/dashboard/agendas">{{ $title }}</a></li>
                         <li class="breadcrumb-item">View {{ $title }}</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
-    {{-- Main Content Start --}}
     <section class="content">
         <!-- /.content-header -->
         <div class="container">
             <div class="row justify-content-center mb-5">
                 <div class="col-md-8">
-                    <h1 class="mb-3">{{ $post->title }}</h1>
+                    <h1 class="mb-3">{{ $agenda->activity }}</h1>
 
-                    <a href="/dashboard/posts" class="btn btn-success mb-3 btn-sm">Kembali ke semua berita</a>
-                    <a href="/dashboard/posts/{{ $post->slug }}/edit" class="btn btn-warning mb-3 btn-sm">Ubah</a>
-                    <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
+                    <a href="/dashboard/agendas" class="btn btn-success mb-3 btn-sm">Kembali ke semua agenda</a>
+                    <a href="/dashboard/agendas/{{ $agenda->slug }}/edit" class="btn btn-warning mb-3 btn-sm">Ubah</a>
+                    <form action="/dashboard/agendas/{{ $agenda->slug }}" method="post" class="d-inline">
                         @method('delete')
                         @csrf
                         <button class="btn btn-danger mb-3 btn-sm" type="button" data-toggle="modal"
@@ -58,23 +57,29 @@
                         </div>
                     </form>
 
-                    @if ($post->image)
-                        <div style="max-height: 350px; overflow: hidden;">
-                            <img src="{{ asset('storage/' . $post->image) }}"alt="{{ $post->category->name }}" class="img-fluid mt-3">
+                    @if ($agenda->image)
+                        <div style="max-height: 350px; overflow:hidden;">
+                            <img src="{{ asset('storage/' . $agenda->image) }}" alt="{{ $agenda->image }}"
+                                class="img-fluid mt-3">
                         </div>
                     @else
-                        <img src="https://source.unsplash.com/1200x400/?{{ $post->category->name }}"alt="{{ $post->category->name }}" class="img-fluid mt-3">
+                        <img src="https://source.unsplash.com/1200x400?{{ $agenda->image }}"
+                            alt="{{ $agenda->image }}" class="img-fluid mt-3">
                     @endif
 
+                    <div class="d-flex mt-3">
+                        <p class="mr-3">Tanggal: {{ $agenda->date }}</p>
+                        <p>Waktu: {{ $agenda->start_time }} - {{ $agenda->end_time }}</p>
+                    </div>
+
                     <article class="my-3 fs-5">
-                        {!! $post->body !!}
+                        {!! $agenda->deskription !!}
                     </article>
 
                 </div>
             </div>
         </div>
     </section>
-    {{-- Main Content End --}}
     <script>
         // Get the modal
         var modal = document.getElementById('id01');

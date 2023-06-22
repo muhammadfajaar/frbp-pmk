@@ -122,7 +122,7 @@
                     @enderror
                 </div>
 
-                <button type="submit" class="btn btn-primary">Edit Organisasi</button>
+                <button type="submit" class="btn btn-primary">Ubah Organisasi</button>
             </form>
         </div>
     </section>

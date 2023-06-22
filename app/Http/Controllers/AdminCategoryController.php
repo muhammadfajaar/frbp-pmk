@@ -51,7 +51,7 @@ class AdminCategoryController extends Controller
 
         Category::create($validateData);
 
-        return redirect('/dashboard/categories')->with('success', 'Category has beed added!');
+        return redirect('/dashboard/categories')->with('success', 'Data kategori baru berhasi ditambah!');
     }
 
     /**
@@ -101,7 +101,7 @@ class AdminCategoryController extends Controller
         Category::where('id', $category->id)
             ->update($validatedData);
 
-        return redirect('/dashboard/categories')->with('success', 'Category has beed updated!');
+        return redirect('/dashboard/categories')->with('success', 'Data kategory berhasi diubah!');
     }
 
     /**
@@ -113,7 +113,7 @@ class AdminCategoryController extends Controller
     public function destroy(Category $category)
     {
         Category::destroy($category->id);
-        return redirect('/dashboard/categories')->with('success', 'Category has beed deleted!');
+        return redirect('/dashboard/categories')->with('success', 'Data kategori berhasi dihapus!');
     }
 
     public function checkSlug(Request $request)

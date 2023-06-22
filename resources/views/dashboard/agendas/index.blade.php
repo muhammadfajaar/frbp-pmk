@@ -58,10 +58,11 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Tanggal</th>
-                                    <th>Waktu</th>
+                                    <th>Waktu Mulai</th>
+                                    <th>Waktu Selesai</th>
                                     <th>Aktifitas</th>
                                     <th>Lokasi</th>
-                                    <th>Action</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -69,7 +70,8 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $agenda->date }}</td>
-                                        <td>{{ $agenda->time }}</td>
+                                        <td>{{ $agenda->start_time }}</td>
+                                        <td>{{ $agenda->end_time }}</td>
                                         <td>{{ $agenda->activity }}</td>
                                         <td>{{ $agenda->location }}</td>
                                         <td>
@@ -121,4 +123,15 @@
         <!-- /.row -->
     </section>
     {{-- Main Content End --}}
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 @endsection

@@ -29,12 +29,6 @@
             </div>
         </div>
         @foreach ($organizations as $organization)
-            <div class="card-header border-0">
-                <h3 class="card-title">
-                    <a href="/dashboard/organizations/{{ $organization->slug }}/edit" class="btn btn-block btn-primary">Edit
-                        Organisasi</a>
-                </h3>
-            </div>
             <div class="card-body">
                 <div class="form-group">
                     <label for="name">Nama</label>
@@ -63,15 +57,40 @@
                     <input type="text" class="form-control" id="address" value="{{ $organization->address }}" disabled>
                 </div>
                 <div class="form-group">
-                  <label for="maps_link">Map Link</label>
-                  <textarea class="form-control" id="maps_link" rows="3" disabled>{{ $organization->maps_link }}</textarea>                  
+                    <label for="maps_link">Map Link</label>
+                    <textarea class="form-control" id="maps_link" rows="3" disabled>{{ $organization->maps_link }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="image">Logo</label>
                     <br>
-                    <img src="{{ asset('storage/' . $organization->image) }}" class="img-fluid mt-3" width="300" height="300">
+                    <img src="{{ asset('storage/' . $organization->image) }}" class="img-fluid mt-3" width="300"
+                        height="300">
                 </div>
+
+                <a href="/dashboard/organizations/{{ $organization->slug }}/edit" class="btn btn-primary"
+                    onclick="toggleForm()">Edit Organisasi</a>
             </div>
         @endforeach
     </section>
+    <script>
+        function toggleForm() {
+            var formElements = document.querySelectorAll('.form-control');
+            var editButton = document.querySelector('.btn-primary');
+
+            // Jika form dalam keadaan aktif, nonaktifkan form dan ubah teks tombol menjadi "Edit Organisasi"
+            if (formElements[0].disabled) {
+                for (var i = 0; i < formElements.length; i++) {
+                    formElements[i].disabled = false;
+                }
+                editButton.innerText = 'Edit Organisasi';
+            }
+            // Jika form dalam keadaan nonaktif, aktifkan form dan ubah teks tombol menjadi "Simpan"
+            else {
+                for (var i = 0; i < formElements.length; i++) {
+                    formElements[i].disabled = true;
+                }
+                editButton.innerText = 'Simpan';
+            }
+        }
+    </script>
 @endsection
