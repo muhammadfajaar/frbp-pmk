@@ -9,13 +9,16 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminGalleryCategoryController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\DashboardAgendaController;
 use App\Http\Controllers\DashboardOrganizationController;
 use App\Http\Controllers\DashboardDisasterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardGalleryController;
 use App\Http\Controllers\DashboardProfileController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,12 +47,8 @@ Route::get('/categories', [CategoryController::class, 'index']);
 // halaman agenda
 Route::get('/agenda', [AgendaController::class, 'index']);
 
-Route::get('/profile', function () {
-    return view('profile', [
-        'title' => 'Profil',
-        'active' => 'profile'
-    ]);
-});
+// halaman profil
+Route::resource('/profile', ProfileController::class);
 
 Route::get('/galery', function () {
     return view('galery', [
@@ -111,5 +110,16 @@ Route::resource('/dashboard/agendas', DashboardAgendaController::class)->middlew
 Route::get('/dashboard/profiles/checkSlug', [DashboardProfileController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/profiles', DashboardProfileController::class)->middleware('auth');
 
+// halaman dashboard galari
+Route::get('/dashboard/galleries/checkSlug', [DashboardGalleryController::class, 'checkSlug'])->middleware('auth');
+Route::resource('/dashboard/galleries', DashboardGalleryController::class)->middleware('auth');
+
+// halaman kategori galeri
+Route::get('/dashboard/gallery_categories/checkSlug', [AdminGalleryCategoryController::class, 'checkSlug'])->middleware('auth');
+Route::resource('/dashboard/gallery_categories', AdminGalleryCategoryController::class)->except('show')->middleware('admin');
+
+// halaman kategori anggota
+Route::get('/dashboard/gallery_categories/checkSlug', [AdminGalleryCategoryController::class, 'checkSlug'])->middleware('auth');
+Route::resource('/dashboard/gallery_categories', AdminGalleryCategoryController::class)->except('show')->middleware('admin');
 
 

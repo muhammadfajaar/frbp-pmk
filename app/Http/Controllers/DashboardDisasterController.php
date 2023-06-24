@@ -79,7 +79,10 @@ class DashboardDisasterController extends Controller
      */
     public function show(Disaster $disaster)
     {
-        //
+        return view('dashboard.disasters.show', [
+            'title' => 'Kebencanaan',
+            'disaster' => $disaster,
+        ]);
     }
 
     /**

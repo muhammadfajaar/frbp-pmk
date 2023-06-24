@@ -7,11 +7,12 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\Disaster;
 use App\Models\DisasterCategory;
+use App\Models\Gallery;
+use App\Models\GalleryCategory;
 use App\Models\Organization;
 use App\Models\Post;
 use App\Models\Subdistrict;
 use App\Models\Profile;
-use App\Models\Submenu;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -277,36 +278,62 @@ class DatabaseSeeder extends Seeder
          'deskription' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt, aspernatur eligendi eveniet sapiente omnis dolorem eos quae, reprehenderit et deleniti in ratione porro nam aut sit quam fugit voluptas distinctio cupiditate quos, explicabo nemo aliquid. Voluptatem, fuga voluptas? Esse cum perferendis tenetur cupiditate neque corporis?'
       ]);
 
-      submenu::create([
-         'name' => 'Struktur Organisasi',
-         'slug' => 'struktur-organisasi'
-      ]);
-      Submenu::create([
-         'name' => 'Visi-Misi',
-         'slug' => 'visi-misi'
-      ]);
-      Submenu::create([
-         'name' => 'Sejarah Organisasi',
-         'slug' => 'sejarah-organisasi'
-      ]);
-
       Profile::create([
-         'submenu_id' => 1,
          'name' => 'Struktur Organisasi',
          'slug' => 'struktur-organisasi',
          'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis rem qui, provident quasi, nihil, veniam tempore nam ex ducimus at doloremque magni odio. Et quaerat sapiente voluptatum debitis nisi repellendus veniam unde tempora nesciunt ipsa, enim in officiis rem quas at? Consectetur ipsa velit quia fugit deserunt officia earum quibusdam explicabo quo, animi, sit dignissimos voluptatem iusto, facilis similique reprehenderit nemo modi perferendis fugiat. Quam, quod necessitatibus. Facere eos delectus corporis ratione magnam fugit officiis dolorum! Quaerat quasi explicabo rem autem alias doloribus deserunt in officiis, repellat aut necessitatibus. Voluptates, reiciendis. Ratione nemo itaque a delectus et cumque nobis repellendus.'
       ]);
       Profile::create([
-         'submenu_id' => 2,
-         'name' => 'Visi-Misi',
+         'name' => 'Visi Misi',
          'slug' => 'visi-misi',
          'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis rem qui, provident quasi, nihil, veniam tempore nam ex ducimus at doloremque magni odio. Et quaerat sapiente voluptatum debitis nisi repellendus veniam unde tempora nesciunt ipsa, enim in officiis rem quas at? Consectetur ipsa velit quia fugit deserunt officia earum quibusdam explicabo quo, animi, sit dignissimos voluptatem iusto, facilis similique reprehenderit nemo modi perferendis fugiat. Quam, quod necessitatibus.'
       ]);
       Profile::create([
-         'submenu_id' => 3,
          'name' => 'Sejarah Organisasi',
          'slug' => 'sejarah-organisasi',
          'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis rem qui, provident quasi, nihil, veniam tempore nam ex ducimus at doloremque magni odio. Et quaerat sapiente voluptatum debitis nisi repellendus veniam unde tempora nesciunt ipsa, enim in officiis rem quas at? Consectetur ipsa velit quia fugit deserunt officia earum quibusdam explicabo quo, animi, sit dignissimos voluptatem iusto, facilis similique reprehenderit nemo modi perferendis fugiat. Quam, quod necessitatibus. Facere eos delectus corporis ratione magnam fugit officiis dolorum! Quaerat quasi explicabo rem autem alias doloribus deserunt in officiis, repellat aut necessitatibus. Voluptates, reiciendis. Ratione nemo itaque a delectus et cumque nobis repellendus.Et quaerat sapiente voluptatum debitis nisi repellendus veniam unde tempora nesciunt ipsa, enim in officiis rem quas at? Consectetur ipsa velit quia fugit deserunt officia earum quibusdam explicabo quo, animi, sit dignissimos voluptatem iusto, facilis similique reprehenderit nemo modi perferendis fugiat.'
+      ]);
+
+      GalleryCategory::create([
+         'name' => 'Sosialisi',
+         'slug' => 'sosialisasi'
+      ]);
+      GalleryCategory::create([
+         'name' => 'Bencana Alam',
+         'slug' => 'bencana-alam'
+      ]);
+      GalleryCategory::create([
+         'name' => 'Base Camp',
+         'slug' => 'base-camp'
+      ]);
+      GalleryCategory::create([
+         'name' => 'Kegiatan Rutin',
+         'slug' => 'kegiatan-rutin'
+      ]);
+
+      Gallery::create([
+         'user_id' => 1,
+         'gallery_category_id' => 1,
+         'description' => 'Pembagian Masker Gratis',
+         'slug' => 'pembagian-masker-gratis'
+      ]);
+      Gallery::create([
+         'user_id' => 2,
+         'gallery_category_id' => 2,
+         'description' => 'Pencarian Korban Tenggelam di Laut',
+         'slug' => 'pencarian-korban-tenggelam-di-laut'
+      ]);
+      Gallery::create([
+         'user_id' => 3,
+         'gallery_category_id' => 3,
+         'description' => 'Rapat Rutin FRPB',
+         'slug' => 'rapat-rutin-frpb',
+      ]);
+      Gallery::create([
+         'user_id' => 4,
+         'gallery_category_id' => 4,
+         'description' => 'Membersihkan Sampah di Sungai',
+         'slug' => 'membersihkan-sampah-di-sungai',
       ]);
    }
 }

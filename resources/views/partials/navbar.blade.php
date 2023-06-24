@@ -10,8 +10,9 @@
         @auth
             <div class="col-md-3">
                 <div class="dropdown custom-dropdown">
-                    <a class="btn btn-secondary dropdown-toggle text-left" href="#" role="button" id="dropdownMenuLink"
-                        data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #00ADB5;">
+                    <a class="btn btn-secondary dropdown-toggle text-left" href="#" role="button"
+                        id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"
+                        style="background-color: #00ADB5;">
                         <span style="font-size: 14px">Welcome back, {{ auth()->user()->name }}</span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -20,7 +21,7 @@
                             <hr class="dropdown-devider">
                         </li>
                         <form action="/logout" method="post">
-                           @csrf
+                            @csrf
                             <button type="submit" class="dropdown-item" href="#"
                                 style="font-size: 14px">Logout</button>
                         </form>
@@ -63,6 +64,10 @@
                 <a class="nav-link nav-text dropdown-toggle {{ $active === 'profile' ? 'active' : '' }}" href="/profile"
                     id="dropdown07XL" data-bs-toggle="dropdown" aria-expanded="false">Profil</a>
                 <ul class="dropdown-menu" aria-labelledby="dropdown07XL">
+                    {{-- @foreach ($profiles as $profile)
+                        <li><a class="dropdown-item {{ $active === 'profile' ? 'active' : '' }}"
+                                hreft="/profile/{{ $profile->slug }}">{{ $profile->name }}</a></li>
+                    @endforeach --}}
                     <li><a class="dropdown-item {{ $active === 'profile' ? 'active' : '' }}" href="/profile">Sejarah
                             FRPB</a></li>
                     <li><a class="dropdown-item {{ $active === 'profile' ? 'active' : '' }}" href="/profile">Visi &

@@ -76,6 +76,8 @@
                                         <td>{{ $disaster->penyebab }}</td>
                                         <td>
                                             <div class="d-inline-flex">
+                                                <a href="/dashboard/disasters/{{ $disaster->slug }}"
+                                                    class="btn btn-info btn-sm mx-1">Detail</a>
                                                 <a href="/dashboard/disasters/{{ $disaster->slug }}/edit"
                                                     class="btn btn-warning btn-sm mx-1">Edit</a>
                                                 <form action="/dashboard/disasters/{{ $disaster->slug }}" method="post"

@@ -75,7 +75,7 @@
                                         <td>{{ $agenda->activity }}</td>
                                         <td>{{ $agenda->location }}</td>
                                         <td>
-                                            <a href="/dashboard/agendas/{{ $agenda->slug }}" class="btn btn-info btn-sm">View</a>
+                                            <a href="/dashboard/agendas/{{ $agenda->slug }}" class="btn btn-info btn-sm">Detail</a>
                                             <a href="/dashboard/agendas/{{ $agenda->slug }}/edit" class="btn btn-warning btn-sm">Edit</a>
                                             <form action="/dashboard/agendas/{{ $agenda->slug }}" method="post"
                                                 class="d-inline">

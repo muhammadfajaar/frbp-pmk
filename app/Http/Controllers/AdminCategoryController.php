@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
-use PhpParser\Node\Expr\Cast;
 
 class AdminCategoryController extends Controller
 {
@@ -51,7 +50,7 @@ class AdminCategoryController extends Controller
 
         Category::create($validateData);
 
-        return redirect('/dashboard/categories')->with('success', 'Data kategori baru berhasi ditambah!');
+        return redirect('/dashboard/categories')->with('success', 'Data kategori baru berhasil ditambah!');
     }
 
     /**
@@ -101,7 +100,7 @@ class AdminCategoryController extends Controller
         Category::where('id', $category->id)
             ->update($validatedData);
 
-        return redirect('/dashboard/categories')->with('success', 'Data kategory berhasi diubah!');
+        return redirect('/dashboard/categories')->with('success', 'Data kategory berhasil diubah!');
     }
 
     /**
@@ -113,7 +112,7 @@ class AdminCategoryController extends Controller
     public function destroy(Category $category)
     {
         Category::destroy($category->id);
-        return redirect('/dashboard/categories')->with('success', 'Data kategori berhasi dihapus!');
+        return redirect('/dashboard/categories')->with('success', 'Data kategori berhasil dihapus!');
     }
 
     public function checkSlug(Request $request)

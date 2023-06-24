@@ -36,7 +36,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
-                            <a href="/dashboard/profiles/create" class="btn btn-block btn-primary">Tambah Profil</a>
+                            <a href="/dashboard/gallery_categories/create" class="btn btn-block btn-primary">Tambah Kategori</a>
                         </h3>
                         <div class="card-tools">
                         </div>
@@ -47,19 +47,18 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama</th>
+                                    <th>Nama Kategori</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($profiles as $profile)
+                                @foreach ($galleryCategories as $gallerycategory)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $profile->name }}</td>
+                                        <td>{{ $gallerycategory->name }}</td>
                                         <td>
-                                            <a href="/dashboard/profiles/{{ $profile->slug }}" class="btn btn-info btn-sm">Detail</a>
-                                            <a href="/dashboard/profiles/{{ $profile->slug }}/edit" class="btn btn-warning btn-sm">Edit</a>
-                                            <form action="/dashboard/profiles/{{ $profile->slug }}" method="post"
+                                            <a href="/dashboard/gallery_categories/{{ $gallerycategory->slug }}/edit" class="btn btn-warning btn-sm">Edit</a>
+                                            <form action="/dashboard/gallery_categories/{{ $gallerycategory->slug }}" method="post"
                                                 class="d-inline">
                                                 @method('delete')
                                                 @csrf

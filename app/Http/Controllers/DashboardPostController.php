@@ -45,7 +45,6 @@ class DashboardPostController extends Controller
     */
    public function store(Request $request)
    {
-
       $validateData = $request->validate([
          'title' => 'required|max:255',
          'slug' => 'required|unique:posts',
@@ -145,7 +144,7 @@ class DashboardPostController extends Controller
          Storage::delete($post->image);
       }
       Post::destroy($post->id);
-      return redirect('/dashboard/posts')->with('success', 'Data berita berhasi dihapus!');
+      return redirect('/dashboard/posts')->with('success', 'Data berita berhasil dihapus!');
    }
 
    public function checkSlug(Request $request)

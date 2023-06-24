@@ -30,7 +30,7 @@
             </li>
             @can('admin')
                 <li class="nav-item menu-is-opening menu-open">
-                    <a href="#" class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : '' }}">
+                    <a href="#" class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : '' }} {{ Request::is('dashboard/gallery_categories*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             Administrator
@@ -46,9 +46,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/dashboard/gallery_categories" class="nav-link {{ Request::is('dashboard/gallery_categories*') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Daftar Submenu Profil</p>
+                                <p>Daftar Kategori Galeri</p>
                             </a>
                         </li>
                     </ul>
@@ -88,7 +88,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/dashboard/profiles" class="nav-link {{ Request::is('dashboard/profiles*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-book"></i>
                     <p>
                         Profil
@@ -96,7 +96,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="pages/widgets.html" class="nav-link">
+                <a href="/dashboard/galleries" class="nav-link {{ Request::is('dashboard/galleries*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-image"></i>
                     <p>
                         Galeri

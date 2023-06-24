@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profile;
+use App\Models\Gallery;
+use App\Models\GalleryCategory;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Facades\Storage;
 
-class DashboardProfileController extends Controller
+class DashboardGalleryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +17,9 @@ class DashboardProfileController extends Controller
      */
     public function index()
     {
-        return view('dashboard.profiles.index', [
-            'title' => 'Profil',
-            'profiles' => Profile::all()
+        return view('dashboard.galleries.index', [
+            'title' => 'Galeri',
+            'galleries' => Gallery::with('galleryCategory')->get()
         ]);
     }
 
@@ -29,9 +30,9 @@ class DashboardProfileController extends Controller
      */
     public function create()
     {
-        return view('dashboard.profiles.create', [
-            'title' => 'Profil',
-            'profiles' => Profile::all()
+        return view('dashboard.galleries.create', [
+            'title' => 'Galeri',
+            'galleryCategories' => GalleryCategory::all()
         ]);
     }
 
@@ -44,49 +45,49 @@ class DashboardProfileController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'name' => 'required|max:255',
-            'slug' => 'required|unique:profiles',
-            'description' => 'required',
+            'description' => 'required|max:255',
+            'slug' => 'required|unique:galleries',
+            'gallery_category_id' => 'required',
             'image' => 'image|file|max:1024',
         ]);
-
-        $validateData['description'] = strip_tags($validateData['description']);
 
         if ($request->file('image')) {
             $validateData['image'] = $request->file('image')->store('post-images');
         }
 
-        Profile::create($validateData);
+        $validateData['user_id'] = auth()->user()->id;
 
-        return redirect('/dashboard/profiles')->with('success', 'Data berita baru berhasil ditambah!');
+        Gallery::create($validateData);
+
+        return redirect('/dashboard/galleries')->with('success', 'Data galeri baru berhasil ditambah!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Profile  $profile
+     * @param  \App\Models\Gallery  $gallery
      * @return \Illuminate\Http\Response
      */
-    public function show(Profile $profile)
+    public function show(Gallery $gallery)
     {
-        return view('dashboard.profiles.show', [
-            'title' => 'Profil',
-            'profile' => $profile
+        return view('dashboard.galleries.show', [
+            'title' => 'Galeri',
+            'gallery' => $gallery
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Profile  $profile
+     * @param  \App\Models\Gallery  $gallery
      * @return \Illuminate\Http\Response
      */
-    public function edit(Profile $profile)
+    public function edit(Gallery $gallery)
     {
-        return view('dashboard.profiles.edit', [
-            'title' => 'Profil',
-            'profile' => $profile,
-            'profiles' => Profile::all()
+        return view('dashboard.galleries.edit', [
+            'title' => 'Galeri',
+            'gallery' => $gallery,
+            'galleryCategories' => GalleryCategory::all()
         ]);
     }
 
@@ -94,19 +95,19 @@ class DashboardProfileController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Profile  $profile
+     * @param  \App\Models\Gallery  $gallery
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Profile $profile)
+    public function update(Request $request, Gallery $gallery)
     {
         $rules = [
-            'name' => 'required|max:255',
-            'description' => 'required',
+            'description' => 'required|max:255',
+            'gallery_category_id' => 'required',
             'image' => 'image|file|max:1024',
         ];
 
-        if ($request->slug != $profile->slug) {
-            $rules['slug'] = 'required|unique:profiles';
+        if ($request->slug != $gallery->slug) {
+            $rules['slug'] = 'required|unique:galleries';
         }
 
         $validateData = $request->validate($rules);
@@ -118,31 +119,30 @@ class DashboardProfileController extends Controller
             $validateData['image'] = $request->file('image')->store('post-images');
         }
 
-        Profile::where('id', $profile->id)
+        Gallery::where('id', $gallery->id)
             ->update($validateData);
 
-        return redirect('/dashboard/profiles')->with('success', 'Data berita berhasil diubah!');
+        return redirect('/dashboard/galleries')->with('success', 'Data galeri berhasil diubah!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Profile  $profile
+     * @param  \App\Models\Gallery  $gallery
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Profile $profile)
+    public function destroy(Gallery $gallery)
     {
-        if ($profile->image) {
-            Storage::delete($profile->image);
+        if ($gallery->image) {
+            Storage::delete($gallery->image);
         }
-        Profile::destroy($profile->id);
-        return redirect('/dashboard/profiles')->with('success', 'Data profil berhasil dihapus!');
+        Gallery::destroy($gallery->id);
+        return redirect('/dashboard/galleries')->with('success', 'Data galeri berhasil dihapus!');
     }
-
 
     public function checkSlug(Request $request)
     {
-        $slug = SlugService::createSlug(Profile::class, 'slug', $request->name);
+        $slug = SlugService::createSlug(Gallery::class, 'slug', $request->description);
         return response()->json(['slug' => $slug]);
     }
 }

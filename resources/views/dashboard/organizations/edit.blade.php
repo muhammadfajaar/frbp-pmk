@@ -12,7 +12,7 @@
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
                         <li class="breadcrumb-item"><a href="/dashboard/organizations">{{ $title }}</a></li>
-                        <li class="breadcrumb-item">{{ $title }}</li>
+                        <li class="breadcrumb-item active">Edit {{ $title }}</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->

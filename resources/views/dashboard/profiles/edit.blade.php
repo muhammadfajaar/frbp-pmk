@@ -6,13 +6,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Tambah {{ $title }}</h1>
+                    <h1 class="m-0">Edit {{ $title }}</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-                        <li class="breadcrumb-item"><a href="/dashboard/posts">Berita</a></li>
-                        <li class="breadcrumb-item active">Tambah {{ $title }}</li>
+                        <li class="breadcrumb-item"><a href="/dashboard/profiles">Profil</a></li>
+                        <li class="breadcrumb-item active">Edit {{ $title }}</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -22,13 +22,14 @@
     {{-- Main Content Start --}}
     <section class="content">
         <div class="col-lg-8">
-            <form method="post" action="/dashboard/posts" enctype="multipart/form-data" class="mb-5">
+            <form method="post" action="/dashboard/profiles/{{ $profile->slug }}" enctype="multipart/form-data" class="mb-5">
+              @method('put')
                 @csrf
                 <div class="form-group">
-                    <label for="title" class="form-label">Judul</label>
-                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
-                        name="title" required autofocus value="{{ old('title') }}">
-                    @error('title')
+                    <label for="name" class="form-label">Nama Profil</label>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
+                        name="name" required autofocus value="{{ old('name', $profile->name) }}">
+                    @error('name')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -37,7 +38,7 @@
                 <div class="form-group">
                     <label for="slug" class="form-label">Slug</label>
                     <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug"
-                        name="slug" required value="{{ old('slug') }}">
+                        name="slug" required value="{{ old('slug', $profile->slug) }}">
                     @error('slug')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -45,19 +46,7 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="category" class="form-label">Kategori</label>
-                    <select class="custom-select" name="category_id">
-                        @foreach ($categories as $category)
-                            @if (old('category_id') == $category->id)
-                                <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
-                            @else
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                            @endif
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="image" class="form-label">Gambar Berita</label>
+                    <label for="image" class="form-label">Gambar Profil</label>
                     <img class="img-preview img-fluid  mb-3 col-sm-5">
                     <input type="file" class="form-control-file @error('image') is-invalid @enderror" id="image"
                         name="image" onchange="previewImage()">
@@ -68,24 +57,24 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="body" class="form-label">Konten</label>
-                    @error('body')
+                    <label for="description" class="form-label @error('description') is-invalid @enderror">Deskripsi</label>
+                    @error('description')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
-                    <input id="body" type="hidden" name="body" value="">
-                    <trix-editor input="body"></trix-editor>
+                    <input id="description" type="hidden" name="description" value="{{ old('description', $profile->description) }}">
+                    <trix-editor input="description"></trix-editor>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Buat Berita</button>
+                <button type="submit" class="btn btn-primary">Pebarui Kategori</button>
             </form>
         </div>
     </section>
     <script>
-        const title = document.querySelector('#title');
+        const name = document.querySelector('#name');
         const slug = document.querySelector('#slug');
 
-        title.addEventListener('change', function() {
-            fetch('/dashboard/posts/checkSlug?title=' + title.value)
+        name.addEventListener('change', function() {
+            fetch('/dashboard/profiles/checkSlug?name=' + name.value)
                 .then(response => response.json())
                 .then(data => slug.value = data.slug)
         });

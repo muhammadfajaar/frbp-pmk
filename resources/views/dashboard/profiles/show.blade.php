@@ -11,23 +11,25 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-                        <li class="breadcrumb-item"><a href="/dashboard/agendas">{{ $title }}</a></li>
+                        <li class="breadcrumb-item"><a href="/dashboard/profiles">Profil</a></li>
                         <li class="breadcrumb-item active">Detail {{ $title }}</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
+
     <section class="content">
         <!-- /.content-header -->
         <div class="container">
-            <div class="row justify-content-center mb-5">
+            <div class="row justify-content-center mb-2">
                 <div class="col-md-8">
-                    <h1 class="mb-3">{{ $agenda->activity }}</h1>
 
-                    <a href="/dashboard/agendas" class="btn btn-success mb-3 btn-sm">Kembali ke semua agenda</a>
-                    <a href="/dashboard/agendas/{{ $agenda->slug }}/edit" class="btn btn-warning mb-3 btn-sm">Ubah</a>
-                    <form action="/dashboard/agendas/{{ $agenda->slug }}" method="post" class="d-inline">
+                    <h1 class="mb-3">{{ $profile->name }}</h1>
+
+                    <a href="/dashboard/profiles" class="btn btn-success mb-3 btn-sm">Kembali ke semua berita</a>
+                    <a href="/dashboard/profiles/{{ $profile->slug }}/edit" class="btn btn-warning mb-3 btn-sm">Ubah</a>
+                    <form action="/dashboard/profiles/{{ $profile->slug }}" method="post" class="d-inline">
                         @method('delete')
                         @csrf
                         <button class="btn btn-danger mb-3 btn-sm" type="button" data-toggle="modal"
@@ -57,39 +59,21 @@
                         </div>
                     </form>
 
-                    @if ($agenda->image)
+                    @if ($profile->image)
                         <div style="max-height: 350px; overflow: hidden;">
-                            <img src="{{ asset('storage/' . $agenda->image) }}" alt="{{ $agenda->slug }}"
+                            <img src="{{ asset('storage/' . $profile->image) }}" alt="{{ $profile->name }}"
                                 class="img-fluid mt-3">
                         </div>
                     @else
-                        <img src="https://source.unsplash.com/1200x400/?{{ $agenda->slug }}" alt="{{ $agenda->slug }}"
+                        <img src="https://source.unsplash.com/1200x400/?{{ $profile->name }}" alt="{{ $profile->name }}"
                             class="img-fluid mt-3">
                     @endif
 
-                    <div class="d-flex mt-3">
-                        <p class="mr-3">Tanggal: {{ $agenda->date }}</p>
-                        <p class="mr-3">Waktu: {{ $agenda->start_time }} - {{ $agenda->end_time }}</p>
-                        <p>Oleh: {{ $agenda->author->name }}</p>
-                    </div>
-
                     <article class="my-3 fs-5">
-                        {!! $agenda->deskription !!}
+                        {!! $profile->description !!}
                     </article>
-
                 </div>
             </div>
         </div>
     </section>
-    <script>
-        // Get the modal
-        var modal = document.getElementById('id01');
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
 @endsection

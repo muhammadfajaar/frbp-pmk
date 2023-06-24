@@ -11,15 +11,15 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-                        <li class="breadcrumb-item active"><a href="/dashboard/posts">Berita</a></li>
-                        <li class="breadcrumb-item">Edit {{ $title }}</li>
+                        <li class="breadcrumb-item"><a href="/dashboard/posts">Berita</a></li>
+                        <li class="breadcrumb-item active">Edit {{ $title }}</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-    {{-- Main Content Start --}}
+{{-- Main Content Start --}}
     <section class="content">
         <div class="col-lg-8">
             <form method="post" action="/dashboard/posts/{{ $post->slug }}" enctype="multipart/form-data">
