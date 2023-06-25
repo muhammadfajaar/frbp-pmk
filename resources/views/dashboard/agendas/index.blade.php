@@ -21,18 +21,17 @@
 
     {{-- Main Content Start --}}
     <section class="content">
-        <div class="row">
-            <div class="col-md-6">
-                @if (session()->has('success'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('success') }}
-                    </div>
-                @endif
-            </div>
-        </div>
         <!-- /.row -->
         <div class="row">
             <div class="col-12">
+                @if (session()->has('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
@@ -75,9 +74,19 @@
                                         <td>{{ $agenda->activity }}</td>
                                         <td>{{ $agenda->location }}</td>
                                         <td>
-                                            <a href="/dashboard/agendas/{{ $agenda->slug }}" class="btn btn-info btn-sm">Detail</a>
-                                            <a href="/dashboard/agendas/{{ $agenda->slug }}/edit" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="/dashboard/agendas/{{ $agenda->slug }}"
+                                                class="btn btn-info btn-sm">Detail</a>
+                                            <a href="/dashboard/agendas/{{ $agenda->slug }}/edit"
+                                                class="btn btn-warning btn-sm">Edit</a>
                                             <form action="/dashboard/agendas/{{ $agenda->slug }}" method="post"
+                                                class="d-inline">
+                                                @method('delete')
+                                                @csrf
+                                                <button class="btn btn-danger btn-sm mr-1"
+                                                    onclick="return confirm('Are you sure!')"><span
+                                                        data-feather="x-circle"></span>Hapus</button>
+                                            </form>
+                                            {{-- <form action="/dashboard/agendas/{{ $agenda->slug }}" method="post"
                                                 class="d-inline">
                                                 @method('delete')
                                                 @csrf
@@ -108,7 +117,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </form>
+                                            </form> --}}
                                         </td>
                                     </tr>
                                 @endforeach

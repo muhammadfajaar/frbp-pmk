@@ -151,7 +151,7 @@ class DashboardDisasterController extends Controller
     public function destroy(Disaster $disaster)
     {
         Disaster::destroy($disaster->id);
-        return redirect('/dashboard/disasters')->with('success', 'Kebencanaan berhasi dihapus!');
+        return redirect('/dashboard/disasters')->with('success', 'Kebencanaan berhasil dihapus!');
     }
 
     public function checkSlug(Request $request)

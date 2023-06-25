@@ -17,6 +17,7 @@ use App\Http\Controllers\DashboardOrganizationController;
 use App\Http\Controllers\DashboardDisasterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardGalleryController;
+use App\Http\Controllers\DashboardMemberController;
 use App\Http\Controllers\DashboardProfileController;
 use App\Http\Controllers\ProfileController;
 
@@ -119,7 +120,7 @@ Route::get('/dashboard/gallery_categories/checkSlug', [AdminGalleryCategoryContr
 Route::resource('/dashboard/gallery_categories', AdminGalleryCategoryController::class)->except('show')->middleware('admin');
 
 // halaman kategori anggota
-Route::get('/dashboard/gallery_categories/checkSlug', [AdminGalleryCategoryController::class, 'checkSlug'])->middleware('auth');
-Route::resource('/dashboard/gallery_categories', AdminGalleryCategoryController::class)->except('show')->middleware('admin');
+Route::get('/dashboard/members/checkSlug', [DashboardMemberController::class, 'checkSlug'])->middleware('auth');
+Route::resource('/dashboard/members', DashboardMemberController::class)->middleware('auth');
 
 

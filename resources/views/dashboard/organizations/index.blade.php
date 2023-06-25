@@ -19,17 +19,16 @@
     </div>
     <!-- /.content-header -->
     <section class="content col-lg-7">
-        <div class="row">
-            <div class="col-lg-8">
+        @foreach ($organizations as $organization)
+            <div class="card-body">
                 @if (session()->has('success'))
                     <div class="alert alert-success" role="alert">
                         {{ session('success') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                 @endif
-            </div>
-        </div>
-        @foreach ($organizations as $organization)
-            <div class="card-body">
                 <div class="form-group">
                     <label for="name">Nama</label>
                     <input type="text" class="form-control" id="name" value="{{ $organization->name }}" disabled>

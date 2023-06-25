@@ -77,7 +77,7 @@
                 </div>
                 <div class="form-group">
                     <label for="location" class="form-label">Lokasi</label>
-                    <input type="location" class="form-control @error('location') is-invalid @enderror" id="location"
+                    <input type="text" class="form-control @error('location') is-invalid @enderror" id="location"
                         name="location" required autofocus value="{{ old('location') }}">
                     @error('location')
                         <div class="invalid-feedback">

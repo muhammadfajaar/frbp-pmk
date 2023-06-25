@@ -21,18 +21,17 @@
 
     {{-- Main Content Start --}}
     <section class="content">
-        <div class="row">
-            <div class="col-md-6">
-                @if (session()->has('success'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('success') }}
-                    </div>
-                @endif
-            </div>
-        </div>
         <!-- /.row -->
         <div class="row">
             <div class="col-12">
+                @if (session()->has('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
@@ -69,43 +68,55 @@
                                         <td>{{ $post->title }}</td>
                                         <td>{{ $post->category->name }}</td>
                                         <td>
-                                            <a href="/dashboard/posts/{{ $post->slug }}"
-                                                class="btn btn-info btn-sm">Detail</a>
-                                            <a href="/dashboard/posts/{{ $post->slug }}/edit"
-                                                class="btn btn-warning btn-sm">Edit</a>
-                                            <form action="/dashboard/posts/{{ $post->slug }}" method="post"
-                                                class="d-inline">
-                                                @method('delete')
-                                                @csrf
-                                                <button class="btn btn-danger btn-sm" type="button"
-                                                    data-toggle="modal" data-target="#confirmDeleteModal">Hapus</button>
+                                            <div class="d-flex justify-content-between">
+                                                <a href="/dashboard/posts/{{ $post->slug }}"
+                                                    class="btn btn-info btn-sm">Detail</a>
+                                                <a href="/dashboard/posts/{{ $post->slug }}/edit"
+                                                    class="btn btn-warning btn-sm">Edit</a>
+                                                <form action="/dashboard/posts/{{ $post->slug }}" method="post"
+                                                    class="d-inline">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button class="btn btn-danger btn-sm mr-1"
+                                                        onclick="return confirm('Are you sure!')"><span
+                                                            data-feather="x-circle"></span>Hapus</button>
+                                                </form>
+                                                {{-- <form action="/dashboard/posts/{{ $post->slug }}" method="post"
+                                                    class="d-inline">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button class="btn btn-danger btn-sm" type="button" data-toggle="modal"
+                                                        data-target="#confirmDeleteModal">Hapus</button>
 
-                                                <div class="modal" id="confirmDeleteModal" tabindex="-1" role="dialog"
-                                                    aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="confirmDeleteModalLabel">Hapus
-                                                                    {{ $title }}</h5>
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <p>Apakah kamu serius untuk menghapus data
-                                                                    {{ $title }}?</p>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                    data-dismiss="modal">Batal</button>
-                                                                <button type="submit" class="btn btn-danger">Hapus</button>
+                                                    <div class="modal" id="confirmDeleteModal" tabindex="-1"
+                                                        role="dialog" aria-labelledby="confirmDeleteModalLabel"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="confirmDeleteModalLabel">
+                                                                        Hapus
+                                                                        {{ $title }}</h5>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p>Apakah kamu serius untuk menghapus data
+                                                                        {{ $title }}?</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Batal</button>
+                                                                    <button type="submit"
+                                                                        class="btn btn-danger">Hapus</button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </form>
-
+                                                </form> --}}
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach

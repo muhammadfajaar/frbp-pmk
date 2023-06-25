@@ -104,7 +104,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="pages/widgets.html" class="nav-link">
+                <a href="/dashboard/members" class="nav-link {{ Request::is('dashboard/members*') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                         Anggota

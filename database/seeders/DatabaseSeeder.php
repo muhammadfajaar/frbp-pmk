@@ -9,6 +9,7 @@ use App\Models\Disaster;
 use App\Models\DisasterCategory;
 use App\Models\Gallery;
 use App\Models\GalleryCategory;
+use App\Models\Member;
 use App\Models\Organization;
 use App\Models\Post;
 use App\Models\Subdistrict;
@@ -335,5 +336,54 @@ class DatabaseSeeder extends Seeder
          'description' => 'Membersihkan Sampah di Sungai',
          'slug' => 'membersihkan-sampah-di-sungai',
       ]);
+
+      Member::create([
+         'name' => 'Budi Aja',
+         'slug' => 'budi-aja',
+         'address' => 'Pamekasan',
+         'phone_number' => '0854332223',
+         'email' => 'budi@gmail.com',
+         'date_birth' => '1997-06-16',
+         'gender' => 'Laki-laki',
+         'marital_status' => 'Lajang',
+         'work' => 'Mahasiswa',
+         'date_joined' => '2020-06-16'
+      ]);
+      Member::create([
+         'name' => 'Andi Aja',
+         'slug' => 'andi-aja',
+         'address' => 'Sampang',
+         'phone_number' => '0854330000',
+         'email' => 'andi@gmail.com',
+         'date_birth' => '1999-05-20',
+         'gender' => 'Laki-laki',
+         'marital_status' => 'Menikah',
+         'work' => 'TNI',
+         'date_joined' => '2019-04-19'
+      ]);
+      Member::create([
+         'name' => 'Salastri',
+         'slug' => 'sulastri',
+         'address' => 'Bangkalan',
+         'phone_number' => '0854333333',
+         'email' => 'sulastri@gmail.com',
+         'date_birth' => '1997-01-11',
+         'gender' => 'Perempuan',
+         'marital_status' => 'Duda',
+         'work' => 'Pedagang',
+         'date_joined' => '2018-06-18'
+      ]);
+      // Member::create([
+      //    'name' => 'Salastri',
+      //    'slug' => 'sulastri',
+      //    'address' => 'Bangkalan',
+      //    'phone_number' => '0854333333',
+      //    'email' => 'sulastri@gmail.com',
+      //    'date_birth' => '1997-01-11',
+      //    'gender' => 'Perempuan',
+      //    'marital_status' => 'Duda',
+      //    'work' => 'Pedagang',
+      //    'date_joined' => '2018-06-18'
+      // ]);
    }
 }
