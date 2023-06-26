@@ -30,7 +30,7 @@
             </li>
             @can('admin')
                 <li class="nav-item menu-is-opening menu-open">
-                    <a href="#" class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : '' }} {{ Request::is('dashboard/gallery_categories*') ? 'active' : '' }}">
+                    <a href="#" class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : '' }} {{ Request::is('dashboard/gallery_categories*') ? 'active' : '' }}>
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             Administrator
@@ -112,8 +112,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="pages/widgets.html" class="nav-link">
-                    <i class="nav-icon fas fa-tree"></i>
+                <a href="/dashboard/contacts" class="nav-link {{ Request::is('dashboard/contacts*') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-envelope"></i>
                     <p>
                         Aspirasi
                     </p>

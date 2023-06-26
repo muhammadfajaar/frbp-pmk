@@ -23,38 +23,6 @@ class DashboardOrganizationController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Organization  $organization
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Organization $organization)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Organization  $organization
@@ -104,18 +72,7 @@ class DashboardOrganizationController extends Controller
 
         $organization->update($validatedData);
 
-        return redirect('/dashboard/organizations')->with('success', 'Data Organisasi Berhasi diubah!');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Organization  $organization
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Organization $organization)
-    {
-        //
+        return redirect('/dashboard/organizations')->with('success', 'Data Organisasi Berhasil diubah!');
     }
 
     public function checkSlug(Request $request)

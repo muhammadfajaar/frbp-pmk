@@ -21,18 +21,17 @@
 
     {{-- Main Content Start --}}
     <section class="content">
-        <div class="row">
-            <div class="col-lg-6">
-                @if (session()->has('success'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('success') }}
-                    </div>
-                @endif
-            </div>
-        </div>
         <!-- /.row -->
         <div class="row col-lg-6">
             <div class="col-12">
+                @if (session()->has('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
@@ -57,8 +56,17 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $category->name }}</td>
                                         <td>
-                                            <a href="/dashboard/categories/{{ $category->slug }}/edit" class="btn btn-warning btn-sm">Edit</a>
-                                            <form action="/dashboard/categories/{{ $category->slug }}" method="post"
+                                            <a href="/dashboard/categories/{{ $category->slug }}/edit"
+                                                class="btn btn-warning btn-sm">Edit</a>
+                                            <form action="/dashboard/categories/{{ $category->slug }}"
+                                                method="post" class="d-inline">
+                                                @method('delete')
+                                                @csrf
+                                                <button class="btn btn-danger btn-sm mr-1"
+                                                    onclick="return confirm('Are you sure!')"><span
+                                                        data-feather="x-circle"></span>Hapus</button>
+                                            </form>
+                                            {{-- <form action="/dashboard/categories/{{ $category->slug }}" method="post"
                                                 class="d-inline">
                                                 @method('delete')
                                                 @csrf
@@ -89,7 +97,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </form>
+                                            </form> --}}
                                         </td>
                                     </tr>
                                 @endforeach

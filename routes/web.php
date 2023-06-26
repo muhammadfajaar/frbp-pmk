@@ -6,20 +6,23 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\DisasterController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\MemberController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminGalleryCategoryController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardPostController;
-use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\DashboardAgendaController;
+use App\Http\Controllers\DashboardContactController;
 use App\Http\Controllers\DashboardOrganizationController;
 use App\Http\Controllers\DashboardDisasterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardGalleryController;
 use App\Http\Controllers\DashboardMemberController;
 use App\Http\Controllers\DashboardProfileController;
-use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,26 +54,15 @@ Route::get('/agenda', [AgendaController::class, 'index']);
 // halaman profil
 Route::resource('/profile', ProfileController::class);
 
-Route::get('/galery', function () {
-    return view('galery', [
-        'title' => 'Galeri,',
-        'active' => 'galery'
-    ]);
-});
+// halaman galeri
+Route::get('/gallery', [GalleryController::class, 'index']);
 
-Route::get('/member', function () {
-    return view('member', [
-        'title' => 'Anggota,',
-        'active' => 'member'
-    ]);
-});
+// halaman anggota
+Route::get('/member', [MemberController::class, 'index']);
 
-Route::get('/contact', function () {
-    return view('contact', [
-        'title' => 'Kontak',
-        'active' => 'contact'
-    ]);
-});
+// halaman kontak
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact', [AspirationController::class, 'store'])->name('contact.store');
 
 // halaman login
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
@@ -84,9 +76,6 @@ Route::post('/register', [RegisterController::class, 'store']);
 // halaman dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
-//  halaman dashboard user
-Route::get('/dashboard/users', [DashboardUserController::class, 'index'])->middleware('auth');
-
 // halaman dashboard berita
 Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
@@ -97,7 +86,7 @@ Route::resource('/dashboard/categories', AdminCategoryController::class)->except
 
 // halaman dashboard organisasi
 Route::get('/dashboard/organizations/checkSlug', [DashboardOrganizationController::class, 'checkSlug'])->middleware('auth');
-Route::resource('/dashboard/organizations', DashboardOrganizationController::class)->middleware('auth');
+Route::resource('/dashboard/organizations', DashboardOrganizationController::class)->except('create', 'store', 'destroy')->middleware('auth');
 
 // halaman dashboard bencana
 Route::get('/dashboard/disasters/checkSlug', [DashboardDisasterController::class, 'checkSlug'])->middleware('auth');
@@ -119,8 +108,9 @@ Route::resource('/dashboard/galleries', DashboardGalleryController::class)->midd
 Route::get('/dashboard/gallery_categories/checkSlug', [AdminGalleryCategoryController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/gallery_categories', AdminGalleryCategoryController::class)->except('show')->middleware('admin');
 
-// halaman kategori anggota
+// halaman anggota
 Route::get('/dashboard/members/checkSlug', [DashboardMemberController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/members', DashboardMemberController::class)->middleware('auth');
 
-
+// halaman kontak
+Route::resource('/dashboard/contacts', DashboardContactController::class)->except('create', 'store', 'destroy')->middleware('auth');

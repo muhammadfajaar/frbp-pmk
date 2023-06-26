@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Agenda;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\Disaster;
 use App\Models\DisasterCategory;
 use App\Models\Gallery;
@@ -29,6 +30,7 @@ class DatabaseSeeder extends Seeder
       User::create([
          'name' => 'Admin',
          'username' => 'admin',
+         'is_admin' => 1,
          'email' => 'admin@gmail.com',
          'password' => bcrypt('password')
       ]);
@@ -373,17 +375,21 @@ class DatabaseSeeder extends Seeder
          'work' => 'Pedagang',
          'date_joined' => '2018-06-18'
       ]);
-      // Member::create([
-      //    'name' => 'Salastri',
-      //    'slug' => 'sulastri',
-      //    'address' => 'Bangkalan',
-      //    'phone_number' => '0854333333',
-      //    'email' => 'sulastri@gmail.com',
-      //    'date_birth' => '1997-01-11',
-      //    'gender' => 'Perempuan',
-      //    'marital_status' => 'Duda',
-      //    'work' => 'Pedagang',
-      //    'date_joined' => '2018-06-18'
-      // ]);
+      
+      Contact::create([
+         'name' => 'Andi Law',
+         'whatsapp_or_email' => 'andi@gmail.com',
+         'message' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis rem qui, provident quasi, nihil, veniam tempore nam ex ducimus at doloremque magni odio. Et quaerat sapiente voluptatum debitis nisi repellendus.'
+      ]);
+      Contact::create([
+         'name' => 'Salam Pole',
+         'whatsapp_or_email' => 'salam@gmail.com',
+         'message' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis rem qui, provident quasi, nihil, veniam tempore nam ex ducimus at doloremque magni odio.'
+      ]);
+      Contact::create([
+         'name' => 'Faisal Pro',
+         'whatsapp_or_email' => '05343323232',
+         'message' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis rem qui, provident quasi, nihil, veniam tempore nam ex ducimus at doloremque magni odio. Et quaerat sapiente voluptatum debitis nisi repellendus veniam unde tempora nesciunt ipsa.'
+      ]);
    }
 }

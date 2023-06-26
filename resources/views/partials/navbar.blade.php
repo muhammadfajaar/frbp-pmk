@@ -77,7 +77,7 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link nav-text {{ $active === 'galery' ? 'active' : '' }}" href="/galery">Galeri</a>
+                <a class="nav-link nav-text {{ $active === 'gallery' ? 'active' : '' }}" href="/gallery">Galeri</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link nav-text {{ $active === 'member' ? 'active' : '' }}" href="/member">Anggota</a>
