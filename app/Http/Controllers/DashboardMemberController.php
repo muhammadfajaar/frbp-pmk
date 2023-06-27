@@ -15,12 +15,28 @@ class DashboardMemberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request->input('search');
+
+        $members = Member::query();
+        
+        if ($search) {
+            $members = $members->where('name', 'LIKE', '%' . $search . '%');
+        }
+        
+        $members = $members->orderBy('id', 'desc')->paginate(6)->withQueryString();
+        
+        $no = ($members->currentPage() - 1) * $members->perPage();
+        
         return view('dashboard.members.index', [
             'title' => 'Anggota',
-            'members' => Member::all()
+            'allMembers' => Member::all(),
+            'members' => $members,
+            'search' => $search,
+            'no' => $no
         ]);
+        
     }
 
     /**

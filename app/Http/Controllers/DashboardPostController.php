@@ -16,13 +16,28 @@ class DashboardPostController extends Controller
     *
     * @return \Illuminate\Http\Response
     */
-   public function index()
+   public function index(Request $request)
    {
+      $search = $request->input('search');
+
+      $posts = Post::where('user_id', auth()->user()->id);
+
+      if ($search) {
+         $posts->where('title', 'LIKE', '%' . $search . '%');
+      }
+
+      $posts = $posts->orderBy('id', 'desc')->paginate(6)->withQueryString();
+
+      $no = ($posts->currentPage() - 1) * $posts->perPage();
+
       return view('dashboard.posts.index', [
          'title' => 'Berita',
-         'posts' => Post::where('user_id', auth()->user()->id)->get()
+         'posts' => $posts,
+         'search' => $search,
+         'no' => $no
       ]);
    }
+
 
    /**
     * Show the form for creating a new resource.
@@ -53,7 +68,7 @@ class DashboardPostController extends Controller
          'body' => 'required'
       ]);
 
-      if($request->file('image')) {
+      if ($request->file('image')) {
          $validateData['image'] = $request->file('image')->store('post-images');
       }
 
@@ -116,8 +131,8 @@ class DashboardPostController extends Controller
 
       $validateData = $request->validate($rules);
 
-      if($request->file('image')) {
-         if($request->oldImage) {
+      if ($request->file('image')) {
+         if ($request->oldImage) {
             Storage::delete($request->oldImage);
          }
          $validateData['image'] = $request->file('image')->store('post-images');
@@ -140,7 +155,7 @@ class DashboardPostController extends Controller
     */
    public function destroy(Post $post)
    {
-      if($post->image) {
+      if ($post->image) {
          Storage::delete($post->image);
       }
       Post::destroy($post->id);

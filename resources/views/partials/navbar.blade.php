@@ -48,26 +48,21 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
                 <a class="nav-link nav-text {{ $active === '/' ? 'active' : '' }}" aria-current="page"
-                    href="/">Beranda</a>
+                    href="/">BERANDA</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link nav-text {{ $active === 'disaster' ? 'active' : '' }}" href="/disaster">Data
-                    Bencana</a>
+                <a class="nav-link nav-text {{ $active === 'disaster' ? 'active' : '' }}" href="/disaster">DATA BENCANA</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link nav-text {{ $active === 'posts' ? 'active' : '' }}" href="/posts">Berita</a>
+                <a class="nav-link nav-text {{ $active === 'posts' ? 'active' : '' }}" href="/posts">BERITA</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link nav-text {{ $active === 'agenda' ? 'active' : '' }}" href="/agenda">Agenda</a>
+                <a class="nav-link nav-text {{ $active === 'agenda' ? 'active' : '' }}" href="/agenda">AGENDA</a>
             </li>
             <li class="nav-item dropdown" style="bottom: -5px">
                 <a class="nav-link nav-text dropdown-toggle {{ $active === 'profile' ? 'active' : '' }}" href="/profile"
-                    id="dropdown07XL" data-bs-toggle="dropdown" aria-expanded="false">Profil</a>
+                    id="dropdown07XL" data-bs-toggle="dropdown" aria-expanded="false">PROFIL</a>
                 <ul class="dropdown-menu" aria-labelledby="dropdown07XL">
-                    {{-- @foreach ($profiles as $profile)
-                        <li><a class="dropdown-item {{ $active === 'profile' ? 'active' : '' }}"
-                                hreft="/profile/{{ $profile->slug }}">{{ $profile->name }}</a></li>
-                    @endforeach --}}
                     <li><a class="dropdown-item {{ $active === 'profile' ? 'active' : '' }}" href="/profile">Sejarah
                             FRPB</a></li>
                     <li><a class="dropdown-item {{ $active === 'profile' ? 'active' : '' }}" href="/profile">Visi &
@@ -77,13 +72,13 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link nav-text {{ $active === 'gallery' ? 'active' : '' }}" href="/gallery">Galeri</a>
+                <a class="nav-link nav-text {{ $active === 'gallery' ? 'active' : '' }}" href="/gallery">GALERI</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link nav-text {{ $active === 'member' ? 'active' : '' }}" href="/member">Anggota</a>
+                <a class="nav-link nav-text {{ $active === 'member' ? 'active' : '' }}" href="/member">ANGGOTA</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link nav-text {{ $active === 'contact' ? 'active' : '' }}" href="/contact">Kontak</a>
+                <a class="nav-link nav-text {{ $active === 'contact' ? 'active' : '' }}" href="/contact">KONTAK</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link nav-text {{ $active === 'categories' ? 'active' : '' }}"

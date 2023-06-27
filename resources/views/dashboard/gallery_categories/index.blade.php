@@ -57,48 +57,18 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $gallerycategory->name }}</td>
                                         <td>
-                                            <a href="/dashboard/gallery_categories/{{ $gallerycategory->slug }}/edit"
-                                                class="btn btn-warning btn-sm">Edit</a>
-                                            <form action="/dashboard/gallery_categories/{{ $gallerycategory->slug }}" method="post"
-                                                class="d-inline">
-                                                @method('delete')
-                                                @csrf
-                                                <button class="btn btn-danger btn-sm mr-1"
-                                                    onclick="return confirm('Are you sure!')"><span
-                                                        data-feather="x-circle"></span>Hapus</button>
-                                            </form>
-                                            {{-- <form action="/dashboard/gallery_categories/{{ $gallerycategory->slug }}"
-                                                method="post" class="d-inline">
-                                                @method('delete')
-                                                @csrf
-                                                <button class="btn btn-danger btn-sm" type="button" data-toggle="modal"
-                                                    data-target="#confirmDeleteModal">Hapus</button>
-
-                                                <div class="modal" id="confirmDeleteModal" tabindex="-1" role="dialog"
-                                                    aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="confirmDeleteModalLabel">Hapus
-                                                                    {{ $title }}</h5>
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <p>Apakah kamu serius untuk menghapus data
-                                                                    {{ $title }}?</p>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                    data-dismiss="modal">Batal</button>
-                                                                <button type="submit" class="btn btn-danger">Hapus</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form> --}}
+                                            <div class="btn-group d-flex justify-content-center" role="group">
+                                                <a href="/dashboard/gallery_categories/{{ $gallerycategory->slug }}/edit"
+                                                    class="btn btn-warning btn-sm">Edit</a>
+                                                <form action="/dashboard/gallery_categories/{{ $gallerycategory->slug }}"
+                                                    method="post" class="d-inline">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button class="btn btn-danger btn-sm"
+                                                        onclick="return confirm('Are you sure!')"><span
+                                                            data-feather="x-circle"></span>Hapus</button>
+                                                </form>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach

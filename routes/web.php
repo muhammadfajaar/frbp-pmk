@@ -62,7 +62,7 @@ Route::get('/member', [MemberController::class, 'index']);
 
 // halaman kontak
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
-Route::post('/contact', [AspirationController::class, 'store'])->name('contact.store');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 // halaman login
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
@@ -113,4 +113,4 @@ Route::get('/dashboard/members/checkSlug', [DashboardMemberController::class, 'c
 Route::resource('/dashboard/members', DashboardMemberController::class)->middleware('auth');
 
 // halaman kontak
-Route::resource('/dashboard/contacts', DashboardContactController::class)->except('create', 'store', 'destroy')->middleware('auth');
+Route::resource('/dashboard/contacts', DashboardContactController::class)->except('create', 'store')->middleware('auth');

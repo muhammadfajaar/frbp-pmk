@@ -13,11 +13,22 @@ class DashboardAgendaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request->input('search');
+
+        $agendas = Agenda::where('activity', 'LIKE', '%' . $search . '%')
+            ->orderBy('id', 'desc')
+            ->paginate(6)
+            ->withQueryString();
+
+        $no = ($agendas->currentPage() - 1) * $agendas->perPage();
+
         return view('dashboard.agendas.index', [
             'title' => 'Agenda',
-            'agendas' => Agenda::all()
+            'agendas' => $agendas,
+            'search' => $search,
+            'no' => $no
         ]);
     }
 

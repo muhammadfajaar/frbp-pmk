@@ -15,11 +15,25 @@ class DashboardGalleryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request->input('search');
+
+        $galleries = Gallery::with('galleryCategory');
+
+        if ($search) {
+            $galleries = $galleries->where('description', 'LIKE', '%' . $search . '%');
+        }
+
+        $galleries = $galleries->orderBy('id', 'desc')->paginate(6)->withQueryString();
+
+        $no = ($galleries->currentPage() - 1) * $galleries->perPage();
+
         return view('dashboard.galleries.index', [
             'title' => 'Galeri',
-            'galleries' => Gallery::with('galleryCategory')->get()
+            'galleries' => $galleries,
+            'search' => $search,
+            'no' => $no
         ]);
     }
 

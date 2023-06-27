@@ -38,16 +38,16 @@
                             <a href="/dashboard/agendas/create" class="btn btn-block btn-primary">Tambah Agenda</a>
                         </h3>
                         <div class="card-tools">
-                            <div class="input-group input-group-sm" style="width: 150px;">
-                                <input type="text" name="table_search" class="form-control float-right"
-                                    placeholder="Search">
-
+                            <form action="" class="form-inline" method="get">
+                                @csrf
+                                <input type="search" name="search" class="form-control float-right"
+                                    placeholder="cari aktifitas">
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-default">
                                         <i class="fas fa-search"></i>
                                     </button>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -67,62 +67,37 @@
                             <tbody>
                                 @foreach ($agendas as $agenda)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $no+ $loop->iteration }}</td>
                                         <td>{{ $agenda->date }}</td>
                                         <td>{{ $agenda->start_time }}</td>
                                         <td>{{ $agenda->end_time }}</td>
                                         <td>{{ $agenda->activity }}</td>
                                         <td>{{ $agenda->location }}</td>
                                         <td>
-                                            <a href="/dashboard/agendas/{{ $agenda->slug }}"
-                                                class="btn btn-info btn-sm">Detail</a>
-                                            <a href="/dashboard/agendas/{{ $agenda->slug }}/edit"
-                                                class="btn btn-warning btn-sm">Edit</a>
-                                            <form action="/dashboard/agendas/{{ $agenda->slug }}" method="post"
-                                                class="d-inline">
-                                                @method('delete')
-                                                @csrf
-                                                <button class="btn btn-danger btn-sm mr-1"
-                                                    onclick="return confirm('Are you sure!')"><span
-                                                        data-feather="x-circle"></span>Hapus</button>
-                                            </form>
-                                            {{-- <form action="/dashboard/agendas/{{ $agenda->slug }}" method="post"
-                                                class="d-inline">
-                                                @method('delete')
-                                                @csrf
-                                                <button class="btn btn-danger btn-sm" type="button" data-toggle="modal"
-                                                    data-target="#confirmDeleteModal">Hapus</button>
-
-                                                <div class="modal" id="confirmDeleteModal" tabindex="-1" role="dialog"
-                                                    aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="confirmDeleteModalLabel">Hapus
-                                                                    {{ $title }}</h5>
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <p>Apakah kamu serius untuk menghapus data
-                                                                    {{ $title }}?</p>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                    data-dismiss="modal">Batal</button>
-                                                                <button type="submit" class="btn btn-danger">Hapus</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form> --}}
+                                            <div class="btn-group d-flex justify-content-center" role="group">
+                                                <a href="/dashboard/agendas/{{ $agenda->slug }}"
+                                                    class="btn btn-info btn-sm">Detail</a>
+                                                <a href="/dashboard/agendas/{{ $agenda->slug }}/edit"
+                                                    class="btn btn-warning btn-sm">Edit</a>
+                                                <form action="/dashboard/agendas/{{ $agenda->slug }}" method="post"
+                                                    class="d-inline">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button class="btn btn-danger btn-sm mr-1"
+                                                        onclick="return confirm('Are you sure!')"><span
+                                                            data-feather="x-circle"></span>Hapus</button>
+                                                </form>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="card-footer clearfix">
+                            <ul class="pagination pagination-sm m-0 float-right">
+                                {{ $agendas->links() }}
+                            </ul>
+                        </div>
                     </div>
                     <!-- /.card-body -->
                 </div>

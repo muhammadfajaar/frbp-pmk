@@ -41,8 +41,7 @@ class DatabaseSeeder extends Seeder
          'password' => bcrypt('password')
       ]);
 
-      User::factory(3)->create();
-
+      
       Category::create([
          'name' => 'Web Programming',
          'slug' => 'web-programming'
@@ -55,8 +54,21 @@ class DatabaseSeeder extends Seeder
          'name' => 'Personal',
          'slug' => 'personal'
       ]);
+      
+      User::factory(3)->create();
+      
+      Post::factory(40)->create();
 
-      Post::factory(30)->create();
+      Agenda::factory(20)->create();
+
+      Disaster::factory(20)->create();
+
+      Gallery::factory(40)->create();
+
+      Member::factory(30)->create();
+
+      Contact::factory(35)->create();
+      
 
       Organization::create([
          'name' => 'forum relawan penanggulangan bencana pamekasan',
@@ -159,128 +171,6 @@ class DatabaseSeeder extends Seeder
          'slug' => 'waru'
       ]);
 
-      Disaster::create([
-         'disaster_category_id' => 1,
-         'subdistrict_id' => 1,
-         'penyebab' => 'Kebocoran Tabung Gas',
-         'slug' => 'kebocoran-tabung-gas',
-         'hilang' => 5,
-         'meninggal_dunia' => 0,
-         'mengungsi' => 10,
-         'luka_luka' => 3,
-         'rumah_rusak_ringan' => 9,
-         'rumah_rusak_sedang' => 12,
-         'rumah_rusak_berat' => 3,
-         'rumah_terendam' => 3,
-         'fas_pendidikan' => 2,
-         'fas_ibadah' => 1,
-         'fas_kesehatan' => 0,
-         'fas_umum' => 3,
-         'location' => 'Ds.Badung, Kab.Pamekasan, Ds.Banyubulu, Kab.Pamekasan, Ds.Batokalangan, Kab.Pamekasan',
-         'waktu' => '12-06-2023'
-      ]);
-      Disaster::create([
-         'disaster_category_id' => 1,
-         'subdistrict_id' => 1,
-         'penyebab' => 'Cuaca Sangat Panas',
-         'slug' => 'cuaca-sangat-panas',
-         'hilang' => 5,
-         'meninggal_dunia' => 0,
-         'mengungsi' => 10,
-         'luka_luka' => 3,
-         'rumah_rusak_ringan' => 9,
-         'rumah_rusak_sedang' => 12,
-         'rumah_rusak_berat' => 3,
-         'rumah_terendam' => 3,
-         'fas_pendidikan' => 2,
-         'fas_ibadah' => 1,
-         'fas_kesehatan' => 0,
-         'fas_umum' => 3,
-         'location' => 'Ds. Proppo, Kab.Pamekasan',
-         'waktu' => '11-06-2023'
-      ]);
-      Disaster::create([
-         'disaster_category_id' => 2,
-         'subdistrict_id' => 2,
-         'penyebab' => 'Hujan Selama Seminggu',
-         'slug' => 'hujan-selama-seminggu',
-         'hilang' => 5,
-         'meninggal_dunia' => 0,
-         'mengungsi' => 10,
-         'luka_luka' => 3,
-         'rumah_rusak_ringan' => 9,
-         'rumah_rusak_sedang' => 12,
-         'rumah_rusak_berat' => 3,
-         'rumah_terendam' => 3,
-         'fas_pendidikan' => 2,
-         'fas_ibadah' => 1,
-         'fas_kesehatan' => 0,
-         'fas_umum' => 3,
-         'location' => 'Ds.Panempan, Kab.Pamekasan',
-         'waktu' => '19-06-2023'
-      ]);
-      Disaster::create([
-         'disaster_category_id' => 3,
-         'subdistrict_id' => 3,
-         'penyebab' => 'Karena Hujan',
-         'slug' => 'karena-hujan',
-         'hilang' => 5,
-         'meninggal_dunia' => 0,
-         'mengungsi' => 10,
-         'luka_luka' => 3,
-         'rumah_rusak_ringan' => 9,
-         'rumah_rusak_sedang' => 12,
-         'rumah_rusak_berat' => 3,
-         'rumah_terendam' => 3,
-         'fas_pendidikan' => 2,
-         'fas_ibadah' => 1,
-         'fas_kesehatan' => 0,
-         'fas_umum' => 3,
-         'location' => 'Ds. Larangan Tokol, Kab.Pamekasan',
-         'waktu' => '20-06-2023'
-      ]);
-
-      Agenda::create([
-         'user_id' => 1,
-         'date' => '23-06-2023',
-         'start_time' => '08:00',
-         'end_time' => '09:00',
-         'activity' => 'Acara Launcing Website FRPB   ',
-         'slug' => 'acara-launcing-website-frpb',
-         'location' => 'Base Camp FRPB',
-         'deskription' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae quod ratione architecto laudantium optio quaerat molestias facere necessitatibus deserunt at doloribus ab consequatur veritatis nemo repellat nostrum in, officia deleniti. Laboriosam adipisci, suscipit dolores odit perspiciatis delectus voluptatum illum, iusto sapiente optio voluptate mollitia asperiores? Est veritatis cum non officiis.'
-      ]);
-      Agenda::create([
-         'user_id' => 2,
-         'date' => '24-06-2023',
-         'start_time' => '10:00',
-         'end_time' => '11:00',
-         'activity' => 'Pelatihan Anggota Baru',
-         'slug' => 'pelatihan-anggota-baru',
-         'location' => 'Kantor',
-         'deskription' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus aliquid laboriosam nihil error perspiciatis voluptates ipsam asperiores ullam magnam ea nemo consequuntur tempora quo sapiente, quam impedit, ad molestias corporis?'
-      ]);
-      Agenda::create([
-         'user_id' => 3,
-         'date' => '25-06-2023',
-         'start_time' => '07:00',
-         'end_time' => '08:00',
-         'activity' => 'Pelatihan Peningkatan Kerja',
-         'slug' => 'pelatihan-peningkatan-kerja',
-         'location' => 'Base Camp FRPB',
-         'deskription' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam voluptatibus voluptatum quos, ex quis consequuntur!'
-      ]);
-      Agenda::create([
-         'user_id' => 1,
-         'date' => '21-06-2023',
-         'start_time' => '06:00',
-         'end_time' => '07:00',
-         'activity' => 'Rapat Bersama Mahasiswa',
-         'slug' => 'rapat-bersama-mahasiswa',
-         'location' => 'Monumen Arek Lancor',
-         'deskription' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt, aspernatur eligendi eveniet sapiente omnis dolorem eos quae, reprehenderit et deleniti in ratione porro nam aut sit quam fugit voluptas distinctio cupiditate quos, explicabo nemo aliquid. Voluptatem, fuga voluptas? Esse cum perferendis tenetur cupiditate neque corporis?'
-      ]);
-
       Profile::create([
          'name' => 'Struktur Organisasi',
          'slug' => 'struktur-organisasi',
@@ -314,82 +204,5 @@ class DatabaseSeeder extends Seeder
          'slug' => 'kegiatan-rutin'
       ]);
 
-      Gallery::create([
-         'user_id' => 1,
-         'gallery_category_id' => 1,
-         'description' => 'Pembagian Masker Gratis',
-         'slug' => 'pembagian-masker-gratis'
-      ]);
-      Gallery::create([
-         'user_id' => 2,
-         'gallery_category_id' => 2,
-         'description' => 'Pencarian Korban Tenggelam di Laut',
-         'slug' => 'pencarian-korban-tenggelam-di-laut'
-      ]);
-      Gallery::create([
-         'user_id' => 3,
-         'gallery_category_id' => 3,
-         'description' => 'Rapat Rutin FRPB',
-         'slug' => 'rapat-rutin-frpb',
-      ]);
-      Gallery::create([
-         'user_id' => 4,
-         'gallery_category_id' => 4,
-         'description' => 'Membersihkan Sampah di Sungai',
-         'slug' => 'membersihkan-sampah-di-sungai',
-      ]);
-
-      Member::create([
-         'name' => 'Budi Aja',
-         'slug' => 'budi-aja',
-         'address' => 'Pamekasan',
-         'phone_number' => '0854332223',
-         'email' => 'budi@gmail.com',
-         'date_birth' => '1997-06-16',
-         'gender' => 'Laki-laki',
-         'marital_status' => 'Lajang',
-         'work' => 'Mahasiswa',
-         'date_joined' => '2020-06-16'
-      ]);
-      Member::create([
-         'name' => 'Andi Aja',
-         'slug' => 'andi-aja',
-         'address' => 'Sampang',
-         'phone_number' => '0854330000',
-         'email' => 'andi@gmail.com',
-         'date_birth' => '1999-05-20',
-         'gender' => 'Laki-laki',
-         'marital_status' => 'Menikah',
-         'work' => 'TNI',
-         'date_joined' => '2019-04-19'
-      ]);
-      Member::create([
-         'name' => 'Salastri',
-         'slug' => 'sulastri',
-         'address' => 'Bangkalan',
-         'phone_number' => '0854333333',
-         'email' => 'sulastri@gmail.com',
-         'date_birth' => '1997-01-11',
-         'gender' => 'Perempuan',
-         'marital_status' => 'Duda',
-         'work' => 'Pedagang',
-         'date_joined' => '2018-06-18'
-      ]);
-      
-      Contact::create([
-         'name' => 'Andi Law',
-         'whatsapp_or_email' => 'andi@gmail.com',
-         'message' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis rem qui, provident quasi, nihil, veniam tempore nam ex ducimus at doloremque magni odio. Et quaerat sapiente voluptatum debitis nisi repellendus.'
-      ]);
-      Contact::create([
-         'name' => 'Salam Pole',
-         'whatsapp_or_email' => 'salam@gmail.com',
-         'message' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis rem qui, provident quasi, nihil, veniam tempore nam ex ducimus at doloremque magni odio.'
-      ]);
-      Contact::create([
-         'name' => 'Faisal Pro',
-         'whatsapp_or_email' => '05343323232',
-         'message' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis rem qui, provident quasi, nihil, veniam tempore nam ex ducimus at doloremque magni odio. Et quaerat sapiente voluptatum debitis nisi repellendus veniam unde tempora nesciunt ipsa.'
-      ]);
    }
 }

@@ -15,11 +15,25 @@ class DashboardDisasterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request->input('search');
+
+        $disasters = Disaster::with('disasterCategory', 'subdistrict');
+
+        if ($search) {
+            $disasters = $disasters->where('location', 'LIKE', '%' . $search . '%');
+        }
+
+        $disasters = $disasters->orderBy('id', 'desc')->paginate(6)->withQueryString();
+
+        $no = ($disasters->currentPage() - 1) * $disasters->perPage();
+
         return view('dashboard.disasters.index', [
             'title' => 'Kebencanaan',
-            'disasters' => Disaster::with('disasterCategory', 'subdistrict')->get()
+            'disasters' => $disasters,
+            'search' => $search,
+            'no' => $no
         ]);
     }
 

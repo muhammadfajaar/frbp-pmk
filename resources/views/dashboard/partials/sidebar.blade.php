@@ -1,5 +1,5 @@
 <!-- Brand Logo -->
-<a href="/" class="brand-link">
+<a href="/" class="brand-link" target="_blank">
     <img src="/img/logo-frpb.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
     <span class="brand-text font-weight-light">FRPB</span>
 </a>
@@ -30,7 +30,7 @@
             </li>
             @can('admin')
                 <li class="nav-item menu-is-opening menu-open">
-                    <a href="#" class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : '' }} {{ Request::is('dashboard/gallery_categories*') ? 'active' : '' }}>
+                    <a href="#" class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : '' }} {{ Request::is('dashboard/gallery_categories*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             Administrator
